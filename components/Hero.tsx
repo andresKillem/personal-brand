@@ -18,7 +18,7 @@ export const Hero = () => {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-white to-indigo-200 animate-fade-in">
-          Principal DevOps Architect
+          Principal DevOps Architect & SRE
         </h1>
 
         <p className="text-2xl md:text-3xl text-blue-100 mb-4 font-semibold">

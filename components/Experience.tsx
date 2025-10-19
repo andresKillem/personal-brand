@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const Experience = () => {
   const experiences = [
     {
@@ -96,11 +94,9 @@ export const Experience = () => {
               <div className="flex flex-col md:flex-row md:items-start gap-6">
                 <div className="flex-shrink-0">
                   <div className="w-20 h-20 bg-white rounded-xl shadow-md p-3 flex items-center justify-center border border-gray-100">
-                    <Image
+                    <img
                       src={exp.logo}
                       alt={`${exp.company} logo`}
-                      width={80}
-                      height={80}
                       className="w-full h-full object-contain"
                     />
                   </div>
