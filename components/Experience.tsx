@@ -74,8 +74,11 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-slate-50 to-gray-50 relative">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Enterprise Experience
@@ -89,11 +92,11 @@ export const Experience = () => {
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-[1.02]"
+              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-cyan-400/50 hover:scale-[1.02]"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-white rounded-xl shadow-md p-3 flex items-center justify-center border border-gray-100">
+                  <div className="w-20 h-20 bg-white rounded-xl shadow-md p-3 flex items-center justify-center border border-gray-200">
                     <img
                       src={exp.logo}
                       alt={`${exp.company} logo`}
@@ -108,7 +111,7 @@ export const Experience = () => {
                       <h3 className="text-2xl font-bold text-gray-900 mb-1">
                         {exp.title}
                       </h3>
-                      <p className="text-lg font-semibold text-blue-600 mb-1">
+                      <p className="text-lg font-semibold text-cyan-600 mb-1">
                         {exp.company}
                       </p>
                       <p className="text-gray-600 text-sm">
@@ -132,7 +135,7 @@ export const Experience = () => {
                     {exp.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-medium border border-blue-200"
+                        className="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 text-cyan-700 px-3 py-1 rounded-lg text-sm font-medium"
                       >
                         {tech}
                       </span>
@@ -146,8 +149,8 @@ export const Experience = () => {
 
         <div className="mt-12 text-center">
           <p className="text-gray-600 mb-6">
-            Also worked with: <strong>Bixlabs</strong> (Senior Software Engineer, 2017-2019),
-            <strong> Kruger Corporation</strong> (Project Leader, 2011-2015)
+            Also worked with: <strong className="text-gray-900">Bixlabs</strong> (Senior Software Engineer, 2017-2019),
+            <strong className="text-gray-900"> Kruger Corporation</strong> (Project Leader, 2011-2015)
           </p>
         </div>
       </div>
