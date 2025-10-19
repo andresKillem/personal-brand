@@ -27,17 +27,17 @@ export const Navigation = () => {
 
           <div className="hidden md:flex items-center space-x-6">
             <div className="flex items-baseline space-x-4">
-              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                About
+              <button onClick={() => scrollToSection('experience')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                Experience
               </button>
               <button onClick={() => scrollToSection('skills')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                 Skills
               </button>
-              <button onClick={() => scrollToSection('experience')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                Experience
-              </button>
               <button onClick={() => scrollToSection('projects')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                 Projects
+              </button>
+              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                About
               </button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                 Contact
@@ -71,17 +71,17 @@ export const Navigation = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
-                About
+              <button onClick={() => scrollToSection('experience')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
+                Experience
               </button>
               <button onClick={() => scrollToSection('skills')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
                 Skills
               </button>
-              <button onClick={() => scrollToSection('experience')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
-                Experience
-              </button>
               <button onClick={() => scrollToSection('projects')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
                 Projects
+              </button>
+              <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
+                About
               </button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium w-full text-left">
                 Contact
