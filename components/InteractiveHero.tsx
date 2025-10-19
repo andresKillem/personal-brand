@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 
 export const InteractiveHero = () => {

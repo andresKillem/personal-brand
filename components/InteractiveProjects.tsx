@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
@@ -8,7 +8,6 @@ import { ProjectsCallToAction } from "./ProjectsCallToAction";
 
 export const InteractiveProjects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
-  const [syncedTooltip, setSyncedTooltip] = useState<any>(null);
 
   const projects = [
     {
@@ -379,12 +378,6 @@ export const InteractiveProjects = () => {
                                 <ResponsiveContainer width="100%" height={250}>
                                   <LineChart
                                     data={project.metrics}
-                                    onMouseMove={(e: any) => {
-                                      if (e && e.activeTooltipIndex !== undefined) {
-                                        setSyncedTooltip(e.activeTooltipIndex);
-                                      }
-                                    }}
-                                    onMouseLeave={() => setSyncedTooltip(null)}
                                   >
                                     <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                                     <XAxis dataKey="month" stroke="#9CA3AF" />
@@ -412,12 +405,6 @@ export const InteractiveProjects = () => {
                                 <ResponsiveContainer width="100%" height={250}>
                                   <AreaChart
                                     data={project.metrics}
-                                    onMouseMove={(e: any) => {
-                                      if (e && e.activeTooltipIndex !== undefined) {
-                                        setSyncedTooltip(e.activeTooltipIndex);
-                                      }
-                                    }}
-                                    onMouseLeave={() => setSyncedTooltip(null)}
                                   >
                                     <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                                     <XAxis dataKey="month" stroke="#9CA3AF" />

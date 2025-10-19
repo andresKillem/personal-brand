@@ -24,7 +24,7 @@ export const NeuralNetwork = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const neuronsRef = useRef<Neuron[]>([]);
   const signalsRef = useRef<Signal[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

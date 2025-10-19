@@ -17,7 +17,7 @@ interface Agent {
 export const AIAgentsEffect = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const agentsRef = useRef<Agent[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const canvas = canvasRef.current;
