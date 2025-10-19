@@ -45,7 +45,7 @@ export const Contact = () => {
             Ready to Optimize Your Cloud Infrastructure?
           </h2>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Let's discuss how I can help accelerate your DevOps transformation and cloud migration initiatives
+            Let&apos;s discuss how I can help accelerate your DevOps transformation and cloud migration initiatives
           </p>
         </div>
 
@@ -164,7 +164,7 @@ export const Contact = () => {
           <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-6">Ready to Start Your Project?</h3>
             <p className="text-blue-100 mb-8 text-lg">
-              Let's discuss your cloud infrastructure needs and DevOps transformation goals.
+              Let&apos;s discuss your cloud infrastructure needs and DevOps transformation goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

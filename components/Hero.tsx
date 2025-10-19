@@ -1,7 +1,5 @@
 "use client";
 
-import { ArrowDown } from "lucide-react";
-
 export const Hero = () => {
   const scrollToContact = () => {
     const element = document.getElementById('contact');
@@ -57,7 +55,7 @@ export const Hero = () => {
             onClick={scrollToContact}
             className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-4 px-10 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-2xl"
           >
-            Let's Connect
+            Let&apos;s Connect
           </button>
           <a
             href="https://www.linkedin.com/in/andres-munoz"
