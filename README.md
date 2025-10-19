@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Andrés Muñoz - Personal Brand Website
+
+Professional portfolio website for Andrés Muñoz, Principal DevOps Architect and Cloud Solutions Expert.
+
+## Features
+
+- **Modern Design**: Built with Next.js 15, React, and Tailwind CSS
+- **Responsive**: Fully responsive design that works on all devices
+- **SEO Optimized**: Comprehensive metadata and Open Graph tags
+- **Performance**: Optimized images and fast loading times
+- **Contact Form**: Functional contact form with email integration
+- **CV Download**: Downloadable PDF resume
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Deployment**: Netlify
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20 or higher
+- npm or yarn
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is configured for deployment on Netlify:
 
-## Learn More
+1. Connect your GitHub repository to Netlify
+2. Netlify will automatically detect the Next.js framework
+3. The build settings are configured in `netlify.toml`
+4. Deploy!
 
-To learn more about Next.js, take a look at the following resources:
+### Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No environment variables are required for basic functionality.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+personal-brand/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout with SEO metadata
+│   ├── page.tsx           # Home page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── Navigation.tsx     # Navigation bar
+│   ├── Hero.tsx          # Hero section
+│   ├── About.tsx         # About section
+│   ├── Skills.tsx        # Skills section
+│   ├── Experience.tsx    # Experience section
+│   ├── Projects.tsx      # Projects section
+│   └── Contact.tsx       # Contact section
+├── public/               # Static assets
+│   ├── logos/           # Company logos
+│   └── cv/              # CV PDFs
+├── lib/                 # Utility functions
+│   └── utils.ts         # Helper utilities
+└── netlify.toml         # Netlify configuration
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Sections
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Hero**: Introduction with key metrics and CTAs
+2. **About**: Core competencies and education
+3. **Skills**: Technical skills categorized by domain
+4. **Experience**: Professional experience with achievements
+5. **Projects**: Notable projects with measurable impact
+6. **Contact**: Contact information and form
+
+## Customization
+
+To customize the content:
+
+1. Edit component files in the `components/` directory
+2. Update metadata in `app/layout.tsx`
+3. Replace logos in `public/logos/`
+4. Update CVs in `public/cv/`
+
+## License
+
+© 2025 Andrés Muñoz. All rights reserved.
+
+## Contact
+
+- **Email**: andreco87@hotmail.com
+- **Phone**: (203) 918-1392
+- **LinkedIn**: [linkedin.com/in/andres-munoz](https://www.linkedin.com/in/andres-munoz)
+- **Location**: Stamford, CT, USA
