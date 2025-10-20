@@ -2,16 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
 import { ProjectsCallToAction } from "./ProjectsCallToAction";
-
-// Dynamic import for client-side charts to avoid SSR issues
-const ClientLineChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientLineChart), { ssr: false });
-const ClientAreaChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientAreaChart), { ssr: false });
-const ClientDualAreaChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientDualAreaChart), { ssr: false });
-const ClientDualLineChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientDualLineChart), { ssr: false });
-const ClientBarChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientBarChart), { ssr: false });
 
 export const InteractiveProjects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -368,81 +360,6 @@ export const InteractiveProjects = () => {
                             </h4>
                             <p className="text-gray-300">{project.solution}</p>
                           </div>
-                        </div>
-
-                        {/* Interactive Metrics Chart */}
-                        <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50">
-                          <h4 className="text-white font-bold text-lg mb-4">
-                            {index === 0 ? "Synchronized Performance Metrics" : "Transformation Metrics Over Time"}
-                            {index === 0 && <span className="text-sm text-gray-400 ml-2">(Hover to sync charts)</span>}
-                          </h4>
-
-                          {/* Synchronized charts for AI/ML project */}
-                          {index === 0 && (
-                            <div className="grid md:grid-cols-2 gap-6">
-                              <div>
-                                <p className="text-cyan-400 text-sm mb-2 font-semibold">Model Accuracy Evolution</p>
-                                <ClientLineChart
-                                  data={project.metrics}
-                                  dataKey="accuracy"
-                                  stroke="#A855F7"
-                                  strokeWidth={3}
-                                  name="Accuracy %"
-                                  domain={[0, 100]}
-                                />
-                              </div>
-
-                              <div>
-                                <p className="text-cyan-400 text-sm mb-2 font-semibold">Daily Inference Volume</p>
-                                <ClientAreaChart
-                                  data={project.metrics}
-                                  dataKey="inference"
-                                  stroke="#10B981"
-                                  fill="#10B981"
-                                  name="Inferences/day"
-                                />
-                              </div>
-                            </div>
-                          )}
-                          {index !== 0 && (
-                            <div>
-                              {index === 1 ? (
-                                <ClientDualAreaChart data={project.metrics} />
-                              ) : index === 2 ? (
-                                <ClientDualLineChart
-                                  data={project.metrics}
-                                  leftKey="uptime"
-                                  rightKey="requests"
-                                  leftStroke="#10B981"
-                                  rightStroke="#3B82F6"
-                                  leftName="Uptime %"
-                                  rightName="Requests/day"
-                                />
-                              ) : index === 3 ? (
-                                <ClientBarChart data={project.metrics} />
-                              ) : index === 4 ? (
-                                <ClientDualLineChart
-                                  data={project.metrics}
-                                  leftKey="tps"
-                                  rightKey="latency"
-                                  leftStroke="#10B981"
-                                  rightStroke="#EF4444"
-                                  leftName="TPS"
-                                  rightName="Latency (ms)"
-                                />
-                              ) : (
-                                <ClientDualLineChart
-                                  data={project.metrics}
-                                  leftKey="incidents"
-                                  rightKey="mttr"
-                                  leftStroke="#EF4444"
-                                  rightStroke="#10B981"
-                                  leftName="Incidents"
-                                  rightName="MTTR (min)"
-                                />
-                              )}
-                            </div>
-                          )}
                         </div>
 
                         {/* Architecture Diagram */}
