@@ -16,13 +16,13 @@ export const VerticalNavigation = () => {
   const [showPhoto, setShowPhoto] = useState(false);
 
   const navItems: NavItem[] = [
-    { id: "hero", label: "System Init", icon: "⚡", color: "#06B6D4" },
-    { id: "experience", label: "Experience Log", icon: "💼", color: "#3B82F6" },
-    { id: "skills", label: "Tech Stack", icon: "🛠️", color: "#8B5CF6" },
-    { id: "projects", label: "Projects DB", icon: "🚀", color: "#10B981" },
-    { id: "about", label: "Profile Data", icon: "👤", color: "#F59E0B" },
-    { id: "publications", label: "Publications", icon: "📚", color: "#A855F7" },
-    { id: "contact", label: "Connect", icon: "📡", color: "#EF4444" },
+    { id: "hero", label: "Home", icon: "◆", color: "#06B6D4" },
+    { id: "experience", label: "Experience", icon: "▪", color: "#3B82F6" },
+    { id: "skills", label: "Skills", icon: "●", color: "#8B5CF6" },
+    { id: "projects", label: "Projects", icon: "▶", color: "#10B981" },
+    { id: "about", label: "About", icon: "◇", color: "#F59E0B" },
+    { id: "publications", label: "Publications", icon: "▣", color: "#A855F7" },
+    { id: "contact", label: "Contact", icon: "▲", color: "#EF4444" },
   ];
 
   useEffect(() => {

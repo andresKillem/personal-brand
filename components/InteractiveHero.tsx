@@ -155,17 +155,6 @@ export const InteractiveHero = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <motion.div
-            className="inline-block mb-6"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring" }}
-          >
-            <span className="bg-green-500/20 text-green-300 px-6 py-3 rounded-full text-sm font-bold border-2 border-green-500/30 animate-pulse shadow-lg shadow-green-500/50">
-              ✓ AVAILABLE FOR NEW OPPORTUNITIES
-            </span>
-          </motion.div>
-
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
             Solutions Architect, DevOps & SRE
           </h1>
