@@ -12,7 +12,7 @@ export const InteractiveProjects = () => {
   const projects = [
     {
       title: "FinTech Payment Infrastructure",
-      company: "Deuna & Housecall Pro",
+      company: "Deuna",
       type: "Microservices Architecture",
       icon: "💳",
       color: "from-green-500 to-emerald-500",

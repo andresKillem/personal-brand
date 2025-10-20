@@ -1,6 +1,20 @@
 export const Experience = () => {
   const experiences = [
     {
+      company: "Deuna",
+      logo: "/logos/deuna-logo.png",
+      title: "Expert Solutions Architect",
+      period: "2023 - Present",
+      location: "Quito, Ecuador (Remote)",
+      achievements: [
+        "Design AWS-based microservices payment systems for FinTech compliance",
+        "Architect mobile payment platforms prioritizing security and user experience",
+        "Implement robust security frameworks for sensitive payment data protection",
+        "Optimize performance through continuous monitoring and system integration"
+      ],
+      technologies: ["AWS", "Microservices", "Mobile Architecture", "Security", "Compliance"]
+    },
+    {
       company: "Housecall Pro",
       logo: "/logos/housecallpro-logo.png",
       title: "Senior DevOps Engineer",
@@ -14,20 +28,6 @@ export const Experience = () => {
         "Designed secure EKS clusters with Istio service mesh for financial services compliance"
       ],
       technologies: ["AWS", "Kubernetes", "Terraform", "Datadog", "Istio", "GitHub Actions"]
-    },
-    {
-      company: "Deuna",
-      logo: "/logos/deuna-logo.png",
-      title: "Expert Solutions Architect",
-      period: "2023 - Present",
-      location: "Quito, Ecuador (Remote)",
-      achievements: [
-        "Design AWS-based microservices payment systems for FinTech compliance",
-        "Architect mobile payment platforms prioritizing security and user experience",
-        "Implement robust security frameworks for sensitive payment data protection",
-        "Optimize performance through continuous monitoring and system integration"
-      ],
-      technologies: ["AWS", "Microservices", "Mobile Architecture", "Security", "Compliance"]
     },
     {
       company: "Kushki",
