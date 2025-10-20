@@ -16,13 +16,13 @@ export const VerticalNavigation = () => {
   const [showPhoto, setShowPhoto] = useState(false);
 
   const navItems: NavItem[] = [
-    { id: "hero", label: "Home", icon: "◆", color: "#06B6D4" },
-    { id: "experience", label: "Experience", icon: "▪", color: "#3B82F6" },
-    { id: "skills", label: "Skills", icon: "●", color: "#8B5CF6" },
-    { id: "projects", label: "Projects", icon: "▶", color: "#10B981" },
-    { id: "about", label: "About", icon: "◇", color: "#F59E0B" },
-    { id: "publications", label: "Publications", icon: "▣", color: "#A855F7" },
-    { id: "contact", label: "Contact", icon: "▲", color: "#EF4444" },
+    { id: "hero", label: "Home", icon: "Home", color: "#06B6D4" },
+    { id: "experience", label: "Experience", icon: "Experience", color: "#3B82F6" },
+    { id: "skills", label: "Skills", icon: "Skills", color: "#8B5CF6" },
+    { id: "projects", label: "Projects", icon: "Projects", color: "#10B981" },
+    { id: "about", label: "About", icon: "About", color: "#F59E0B" },
+    { id: "publications", label: "Publications", icon: "Publications", color: "#A855F7" },
+    { id: "contact", label: "Contact", icon: "Contact", color: "#EF4444" },
   ];
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export const VerticalNavigation = () => {
     <>
       {/* Main Vertical Navigation */}
       <motion.nav
-        className="fixed left-0 top-0 h-screen bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 border-r border-cyan-500/30 shadow-2xl shadow-cyan-500/20 z-50 w-20"
+        className="fixed left-0 top-0 h-screen bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 border-r border-cyan-500/30 shadow-2xl shadow-cyan-500/20 z-50 w-32"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -160,42 +160,17 @@ export const VerticalNavigation = () => {
                   </motion.div>
                 )}
 
-                <div className={`flex items-center justify-center gap-4 px-4 py-3 mx-2 rounded-lg transition-all duration-300 ${
+                <div className={`flex items-center justify-center px-3 py-3 mx-2 transition-all duration-300 ${
                   isActive
-                    ? "bg-cyan-500/20 border border-cyan-500/50"
-                    : "hover:bg-white/5 border border-transparent"
+                    ? "bg-cyan-500/10"
+                    : "hover:bg-white/5"
                 }`}>
-                  {/* Icon Container */}
-                  <div
-                    className="relative w-10 h-10 flex items-center justify-center rounded-lg"
-                    style={{
-                      background: isActive
-                        ? `linear-gradient(135deg, ${item.color}40, ${item.color}20)`
-                        : "rgba(255,255,255,0.05)"
-                    }}
-                  >
-                    <span className="text-2xl">{item.icon}</span>
-
-                    {/* Pulse effect for active item */}
-                    {isActive && (
-                      <motion.div
-                        className="absolute inset-0 rounded-lg"
-                        style={{
-                          background: `linear-gradient(135deg, ${item.color}40, transparent)`,
-                          opacity: 0.5
-                        }}
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.5, 0, 0.5]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    )}
-                  </div>
+                  {/* Word */}
+                  <span className={`text-sm font-semibold tracking-wide ${
+                    isActive ? "text-cyan-400" : "text-gray-400"
+                  }`}>
+                    {item.icon}
+                  </span>
 
                   {/* Activity Indicator */}
                   {isActive && (
@@ -249,7 +224,7 @@ export const VerticalNavigation = () => {
       </motion.nav>
 
       {/* Spacer for content */}
-      <div className="w-20" />
+      <div className="w-32" />
     </>
   );
 };
