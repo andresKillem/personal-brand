@@ -2,9 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
+import dynamic from "next/dynamic";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
 import { ProjectsCallToAction } from "./ProjectsCallToAction";
+
+// Dynamic import for client-side charts to avoid SSR issues
+const ClientLineChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientLineChart), { ssr: false });
+const ClientAreaChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientAreaChart), { ssr: false });
+const ClientDualAreaChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientDualAreaChart), { ssr: false });
+const ClientDualLineChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientDualLineChart), { ssr: false });
+const ClientBarChart = dynamic(() => import("./ClientCharts").then(mod => mod.ClientBarChart), { ssr: false });
 
 export const InteractiveProjects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -375,126 +382,66 @@ export const InteractiveProjects = () => {
                             <div className="grid md:grid-cols-2 gap-6">
                               <div>
                                 <p className="text-cyan-400 text-sm mb-2 font-semibold">Model Accuracy Evolution</p>
-                                <ResponsiveContainer width="100%" height={250}>
-                                  <LineChart
-                                    data={project.metrics}
-                                  >
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                    <XAxis dataKey="month" stroke="#9CA3AF" />
-                                    <YAxis stroke="#9CA3AF" domain={[0, 100]} />
-                                    <Tooltip
-                                      contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                      labelStyle={{ color: '#F3F4F6' }}
-                                      cursor={{ stroke: '#06B6D4', strokeWidth: 2 }}
-                                    />
-                                    <Line
-                                      type="monotone"
-                                      dataKey="accuracy"
-                                      stroke="#A855F7"
-                                      strokeWidth={3}
-                                      name="Accuracy %"
-                                      dot={{ fill: '#A855F7', r: 5 }}
-                                      activeDot={{ r: 8 }}
-                                    />
-                                  </LineChart>
-                                </ResponsiveContainer>
+                                <ClientLineChart
+                                  data={project.metrics}
+                                  dataKey="accuracy"
+                                  stroke="#A855F7"
+                                  strokeWidth={3}
+                                  name="Accuracy %"
+                                  domain={[0, 100]}
+                                />
                               </div>
 
                               <div>
                                 <p className="text-cyan-400 text-sm mb-2 font-semibold">Daily Inference Volume</p>
-                                <ResponsiveContainer width="100%" height={250}>
-                                  <AreaChart
-                                    data={project.metrics}
-                                  >
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                    <XAxis dataKey="month" stroke="#9CA3AF" />
-                                    <YAxis stroke="#9CA3AF" />
-                                    <Tooltip
-                                      contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                      labelStyle={{ color: '#F3F4F6' }}
-                                      cursor={{ stroke: '#06B6D4', strokeWidth: 2 }}
-                                    />
-                                    <Area
-                                      type="monotone"
-                                      dataKey="inference"
-                                      stroke="#10B981"
-                                      fill="#10B981"
-                                      fillOpacity={0.3}
-                                      strokeWidth={3}
-                                      name="Inferences/day"
-                                    />
-                                  </AreaChart>
-                                </ResponsiveContainer>
+                                <ClientAreaChart
+                                  data={project.metrics}
+                                  dataKey="inference"
+                                  stroke="#10B981"
+                                  fill="#10B981"
+                                  name="Inferences/day"
+                                />
                               </div>
                             </div>
                           )}
                           {index !== 0 && (
-                            <ResponsiveContainer width="100%" height={300}>
+                            <div>
                               {index === 1 ? (
-                              <AreaChart data={project.metrics}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                <XAxis dataKey="month" stroke="#9CA3AF" />
-                                <YAxis stroke="#9CA3AF" />
-                                <Tooltip
-                                  contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                  labelStyle={{ color: '#F3F4F6' }}
+                                <ClientDualAreaChart data={project.metrics} />
+                              ) : index === 2 ? (
+                                <ClientDualLineChart
+                                  data={project.metrics}
+                                  leftKey="uptime"
+                                  rightKey="requests"
+                                  leftStroke="#10B981"
+                                  rightStroke="#3B82F6"
+                                  leftName="Uptime %"
+                                  rightName="Requests/day"
                                 />
-                                <Area type="monotone" dataKey="before" stroke="#EF4444" fill="#EF4444" fillOpacity={0.3} name="Before ($)" />
-                                <Area type="monotone" dataKey="after" stroke="#10B981" fill="#10B981" fillOpacity={0.3} name="After ($)" />
-                              </AreaChart>
-                            ) : index === 2 ? (
-                              <LineChart data={project.metrics}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                <XAxis dataKey="month" stroke="#9CA3AF" />
-                                <YAxis yAxisId="left" stroke="#9CA3AF" />
-                                <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" />
-                                <Tooltip
-                                  contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                  labelStyle={{ color: '#F3F4F6' }}
+                              ) : index === 3 ? (
+                                <ClientBarChart data={project.metrics} />
+                              ) : index === 4 ? (
+                                <ClientDualLineChart
+                                  data={project.metrics}
+                                  leftKey="tps"
+                                  rightKey="latency"
+                                  leftStroke="#10B981"
+                                  rightStroke="#EF4444"
+                                  leftName="TPS"
+                                  rightName="Latency (ms)"
                                 />
-                                <Line yAxisId="left" type="monotone" dataKey="uptime" stroke="#10B981" strokeWidth={3} name="Uptime %" />
-                                <Line yAxisId="right" type="monotone" dataKey="requests" stroke="#3B82F6" strokeWidth={3} name="Requests/day" />
-                              </LineChart>
-                            ) : index === 3 ? (
-                              <BarChart data={project.metrics}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                <XAxis dataKey="month" stroke="#9CA3AF" />
-                                <YAxis stroke="#9CA3AF" />
-                                <Tooltip
-                                  contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                  labelStyle={{ color: '#F3F4F6' }}
+                              ) : (
+                                <ClientDualLineChart
+                                  data={project.metrics}
+                                  leftKey="incidents"
+                                  rightKey="mttr"
+                                  leftStroke="#EF4444"
+                                  rightStroke="#10B981"
+                                  leftName="Incidents"
+                                  rightName="MTTR (min)"
                                 />
-                                <Bar dataKey="deployments" fill="#10B981" name="Deployments" />
-                                <Bar dataKey="failures" fill="#EF4444" name="Failures" />
-                              </BarChart>
-                            ) : index === 4 ? (
-                              <LineChart data={project.metrics}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                <XAxis dataKey="month" stroke="#9CA3AF" />
-                                <YAxis yAxisId="left" stroke="#9CA3AF" />
-                                <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" />
-                                <Tooltip
-                                  contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                  labelStyle={{ color: '#F3F4F6' }}
-                                />
-                                <Line yAxisId="left" type="monotone" dataKey="tps" stroke="#10B981" strokeWidth={3} name="TPS" />
-                                <Line yAxisId="right" type="monotone" dataKey="latency" stroke="#EF4444" strokeWidth={3} name="Latency (ms)" />
-                              </LineChart>
-                            ) : (
-                              <LineChart data={project.metrics}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                                <XAxis dataKey="month" stroke="#9CA3AF" />
-                                <YAxis yAxisId="left" stroke="#9CA3AF" />
-                                <YAxis yAxisId="right" orientation="right" stroke="#9CA3AF" />
-                                <Tooltip
-                                  contentStyle={{ backgroundColor: '#1F2937', border: '1px solid #374151', borderRadius: '8px' }}
-                                  labelStyle={{ color: '#F3F4F6' }}
-                                />
-                                <Line yAxisId="left" type="monotone" dataKey="incidents" stroke="#EF4444" strokeWidth={3} name="Incidents" />
-                                <Line yAxisId="right" type="monotone" dataKey="mttr" stroke="#10B981" strokeWidth={3} name="MTTR (min)" />
-                              </LineChart>
-                            )}
-                          </ResponsiveContainer>
+                              )}
+                            </div>
                           )}
                         </div>
 
