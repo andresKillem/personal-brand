@@ -322,9 +322,9 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Lectura que Recomiendo */}
+            {/* Recommended Reading */}
             <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-4">Lectura que Recomiendo</h3>
+              <h3 className="font-semibold mb-4">Recommended Reading</h3>
 
               {/* Book 1 - An Elegant Puzzle */}
               <div className="mb-6 pb-6 border-b border-gray-200">
