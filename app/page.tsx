@@ -6,7 +6,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
             <div className="text-sm text-gray-600">
-              <a href="#" className="hover:text-gray-900">Andrés Muñoz</a>
+              <a href="#" className="hover:text-gray-900">Home</a>
             </div>
             <div className="flex gap-6 text-sm">
               <a href="#writing" className="text-gray-600 hover:text-gray-900">Writing</a>
@@ -115,16 +115,17 @@ export default function Home() {
                 </div>
 
                 <div className="border-l-4 border-green-500 pl-4">
-                  <h3 className="text-lg font-semibold mb-2">AI/ML Platform with IaC @ Housecall Pro</h3>
+                  <h3 className="text-lg font-semibold mb-2">Multi-Region Disaster Recovery Architecture @ Housecall Pro</h3>
                   <p className="text-gray-700 mb-2">
-                    Built automated ML pipeline infrastructure combining TensorFlow models, Kubernetes orchestration, and infrastructure
-                    as code. Reduced model deployment time from 14 days to 12 hours with automated retraining pipelines.
+                    Architected and implemented comprehensive multi-region disaster recovery solution with automated failover capabilities.
+                    Designed infrastructure spanning multiple AWS regions with RDS cross-region replication, GitLab HA setup, and
+                    infrastructure as code using Terraform and Terragrunt for consistent deployments.
                   </p>
                   <p className="text-sm text-gray-600">
-                    <strong>Impact:</strong> 94% model accuracy, 35% cost reduction, automated deployment
+                    <strong>Impact:</strong> 99.99% availability, &lt;5min RTO, &lt;15min RPO, zero data loss during DR tests
                   </p>
                   <p className="text-sm text-gray-600">
-                    <strong>Tech:</strong> Kubeflow, TensorFlow, MLflow, Kubernetes, Python, Terraform
+                    <strong>Tech:</strong> AWS Multi-Region, RDS Cross-Region Replication, GitLab HA, Terraform, Terragrunt, Route53
                   </p>
                 </div>
 
@@ -252,10 +253,88 @@ export default function Home() {
 
             <div className="border-t border-gray-200 my-12"></div>
 
+            {/* AI Implementation & Ethics */}
+            <section className="mb-16">
+              <h2 className="text-3xl font-serif mb-6">AI in Daily Practice</h2>
+              <div className="bg-gray-50 border-l-4 border-purple-500 p-6 mb-6">
+                <h3 className="text-xl font-semibold mb-3">How I&apos;m Leveraging AI</h3>
+                <p className="text-gray-700 mb-4">
+                  As a solutions architect, I&apos;ve integrated AI tools into my daily workflow for code review, infrastructure
+                  design validation, and documentation generation. AI serves as a force multiplier for routine tasks, allowing me
+                  to focus on architectural decisions and strategic thinking.
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Using AI-assisted code review to catch security vulnerabilities and best practice violations</li>
+                  <li>• Generating infrastructure documentation and runbooks with AI, then validating with team expertise</li>
+                  <li>• Leveraging AI for rapid prototyping of Terraform modules and policy-as-code implementations</li>
+                  <li>• Automating incident response documentation while maintaining human oversight</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
+                <h3 className="text-xl font-semibold mb-3">The Ethics of AI-Driven Development</h3>
+                <p className="text-gray-700 mb-4">
+                  With AI integration comes responsibility. I maintain strict principles around AI usage:
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• <strong>Human Validation:</strong> Never deploy AI-generated code or infrastructure without thorough review and testing</li>
+                  <li>• <strong>Transparency:</strong> Always disclose when AI assists in deliverables to clients and teams</li>
+                  <li>• <strong>Data Privacy:</strong> Ensure no sensitive client data or proprietary information enters AI tools</li>
+                  <li>• <strong>Skill Preservation:</strong> Use AI to augment, not replace, fundamental engineering skills</li>
+                </ul>
+              </div>
+            </section>
+
+            <div className="border-t border-gray-200 my-12"></div>
+
             {/* Writing */}
             <section id="writing" className="mb-16">
               <h2 className="text-3xl font-serif mb-6">Writing</h2>
               <div className="space-y-4">
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-200 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-orange-900">
+                    The Productivity Paradox of AI: A Hypothesis
+                  </h3>
+                  <p className="text-gray-800 mb-4 leading-relaxed">
+                    We stand at an inflection point. AI promises unprecedented productivity gains—generating code in seconds,
+                    automating infrastructure deployment, and solving complex problems instantly. But here&apos;s the question we must ask:
+                  </p>
+                  <p className="text-lg font-medium text-gray-900 mb-4 italic border-l-4 border-orange-400 pl-4">
+                    &quot;Are we entering a productivity boom that elevates our capabilities, or a bubble that erodes our fundamental
+                    engineering muscle memory?&quot;
+                  </p>
+                  <p className="text-gray-800 mb-4 leading-relaxed">
+                    I&apos;ve observed engineers who can deploy entire Kubernetes clusters with AI assistance but struggle to debug
+                    a basic networking issue. We can generate Terraform modules in minutes but lose the intuition for infrastructure
+                    design patterns earned through years of trial and error.
+                  </p>
+                  <p className="text-gray-800 mb-4 leading-relaxed">
+                    <strong>The hypothesis:</strong> AI creates a bifurcation in engineering competency. Those who use it as a force
+                    multiplier—understanding the fundamentals and using AI to accelerate—will reach new heights. Those who rely on
+                    it as a crutch risk becoming operators of tools they don&apos;t understand, vulnerable when AI fails or produces
+                    incorrect solutions.
+                  </p>
+                  <p className="text-gray-800 mb-4 leading-relaxed">
+                    The muscle memory we lose—the ability to write algorithms without autocomplete, design systems without AI
+                    suggestions, debug without AI-generated hypotheses—may be the very foundation that allows us to validate
+                    AI&apos;s outputs and catch its hallucinations.
+                  </p>
+                  <p className="text-gray-800 leading-relaxed">
+                    <strong>The open question:</strong> Will the next generation of engineers be more productive because they stand
+                    on the shoulders of AI, or less resilient because they never built the foundational skills to question it?
+                    Only time will tell if this is a sustainable productivity revolution or a bubble waiting to expose our collective
+                    technical debt.
+                  </p>
+                  <div className="mt-6 pt-4 border-t border-orange-200">
+                    <p className="text-sm text-gray-600 italic">
+                      This is a working hypothesis based on observations in modern DevOps and SRE practices. I invite debate,
+                      criticism, and alternative perspectives.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 my-8"></div>
+
                 <div>
                   <a
                     href="https://www.encora.com/insights/diving-deep-into-devsecops-key-considerations"
