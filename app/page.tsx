@@ -10,8 +10,9 @@ export default function Home() {
             </div>
             <div className="flex gap-6 text-sm">
               <a href="#writing" className="text-gray-600 hover:text-gray-900">Writing</a>
+              <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#experience" className="text-gray-600 hover:text-gray-900">Experience</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
+              <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">LinkedIn</a>
               <a href="https://github.com/andresKillem" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">GitHub</a>
             </div>
           </nav>
@@ -32,9 +33,8 @@ export default function Home() {
 
               <div className="prose prose-lg max-w-none text-gray-700">
                 <p className="mb-4">
-                  I&apos;m a principal-level architect with a PhD in Computer Science, specializing in cloud architecture,
-                  DevOps transformation, and platform engineering. Currently architecting payment systems at Deuna serving
-                  millions across Latin America.
+                  I&apos;m a principal-level architect specializing in cloud architecture, DevOps transformation, and
+                  platform engineering. Currently architecting payment systems at Deuna serving millions across Latin America.
                 </p>
                 <p className="mb-4">
                   I focus on designing AWS multi-account architectures, implementing Zero Trust security, and building highly
@@ -45,24 +45,16 @@ export default function Home() {
 
               <div className="border-t border-gray-200 my-8"></div>
 
-              {/* Contact Info */}
+              {/* Contact Info - Only LinkedIn */}
               <div className="text-sm text-gray-700">
-                <p className="mb-2">
-                  <span className="font-semibold">Email:</span>{" "}
-                  <a href="mailto:andreco87@hotmail.com" className="text-blue-700 hover:underline">
-                    andreco87@hotmail.com
-                  </a>
-                </p>
-                <p className="mb-2">
-                  <span className="font-semibold">Phone:</span> (203) 918-1392
-                </p>
-                <p className="mb-2">
-                  <span className="font-semibold">Location:</span> Stamford, CT - Remote Available
-                </p>
                 <p>
-                  <span className="font-semibold">LinkedIn:</span>{" "}
-                  <a href="https://www.linkedin.com/in/andresmunozb" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    linkedin.com/in/andresmunozb
+                  <span className="font-semibold">Connect:</span>{" "}
+                  <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+                    LinkedIn
+                  </a>
+                  {" • "}
+                  <a href="https://github.com/andresKillem" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+                    GitHub
                   </a>
                 </p>
               </div>
@@ -83,6 +75,69 @@ export default function Home() {
                   <li>• Implement robust security frameworks for sensitive payment data protection</li>
                   <li>• Optimize performance through continuous monitoring and system integration</li>
                 </ul>
+              </div>
+            </section>
+
+            <div className="border-t border-gray-200 my-12"></div>
+
+            {/* Projects */}
+            <section id="projects" className="mb-16">
+              <h2 className="text-3xl font-serif mb-6">Selected Projects</h2>
+
+              <div className="space-y-6">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h3 className="text-lg font-semibold mb-2">FinTech Payment Infrastructure @ Deuna</h3>
+                  <p className="text-gray-700 mb-2">
+                    Designed secure, compliant microservices architecture for payment processing with AWS, ensuring PCI-DSS compliance
+                    and real-time transaction processing. Transformed legacy monolith processing 100 TPS into event-driven microservices
+                    handling 1,500+ TPS with sub-second latency.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Impact:</strong> 99.95% success rate, 450ms latency, full PCI-DSS compliance
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Tech:</strong> AWS, Go, Microservices, API Gateway, DynamoDB, Lambda
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-purple-500 pl-4">
+                  <h3 className="text-lg font-semibold mb-2">Multi-Cloud DevOps Transformation @ Housecall Pro</h3>
+                  <p className="text-gray-700 mb-2">
+                    Led enterprise DevOps transformation for SaaS platform serving millions. Architected multi-cloud solutions (AWS/Azure)
+                    with global RDS replication and cross-region DR. Reduced MTTR by 40% through comprehensive observability stack.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Impact:</strong> 40% MTTR reduction, 20% cost savings, 99.9% uptime
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Tech:</strong> AWS, Azure, Kubernetes, Terraform, Datadog, Prometheus, Istio
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h3 className="text-lg font-semibold mb-2">AI/ML Platform with IaC @ Housecall Pro</h3>
+                  <p className="text-gray-700 mb-2">
+                    Built automated ML pipeline infrastructure combining TensorFlow models, Kubernetes orchestration, and infrastructure
+                    as code. Reduced model deployment time from 14 days to 12 hours with automated retraining pipelines.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Impact:</strong> 94% model accuracy, 35% cost reduction, automated deployment
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Tech:</strong> Kubeflow, TensorFlow, MLflow, Kubernetes, Python, Terraform
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-orange-500 pl-4">
+                  <h3 className="text-lg font-semibold mb-2">Unified API Platform @ Kushki</h3>
+                  <p className="text-gray-700 mb-2">
+                    Architected unified API platform with focus on governance and developer experience for payment processing across
+                    Latin America. Developed Go-based microservices following best practices.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Tech:</strong> AWS, Go, API Platform, Microservices, DevOps
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -138,10 +193,6 @@ export default function Home() {
             <section className="mb-16">
               <h2 className="text-3xl font-serif mb-6">Education</h2>
               <div className="space-y-3">
-                <div>
-                  <h3 className="font-semibold">PhD in Computer Science</h3>
-                  <p className="text-gray-600 text-sm">Universidad de Vigo, Spain</p>
-                </div>
                 <div>
                   <h3 className="font-semibold">M.Sc. Mobile Computing</h3>
                   <p className="text-gray-600 text-sm">Instituto Politécnico de Leiria, Portugal</p>
@@ -250,51 +301,89 @@ export default function Home() {
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <p className="text-sm mb-4">
                 Hi folks. I&apos;m{" "}
-                <a href="https://www.linkedin.com/in/andresmunozb" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline font-medium">
+                <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline font-medium">
                   Andrés Muñoz
                 </a>
                 .
               </p>
               <p className="text-sm mb-4">
-                If you&apos;re looking to reach out to me, here are{" "}
-                <a href="#contact" className="text-blue-700 hover:underline">
-                  ways I help
-                </a>
-                .
+                I&apos;m an Expert Solutions Architect specializing in cloud infrastructure and DevOps transformation.
               </p>
-              <p className="text-sm mb-4">
-                Want to see my latest work?{" "}
-                <a
-                  href="https://www.linkedin.com/feed/update/urn:li:activity:7255636517673398273/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-700 hover:underline"
-                >
-                  Check out my video
+              <p className="text-sm">
+                Check out my{" "}
+                <a href="#projects" className="text-blue-700 hover:underline">
+                  selected projects
+                </a>
+                {" "}or{" "}
+                <a href="#writing" className="text-blue-700 hover:underline">
+                  technical writing
                 </a>
                 .
               </p>
             </div>
 
-            {/* LinkedIn Video Embed */}
+            {/* Lectura que Recomiendo */}
             <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-3">Latest Work</h3>
-              <div className="aspect-video bg-gray-100 rounded flex items-center justify-center mb-3">
+              <h3 className="font-semibold mb-4">Lectura que Recomiendo</h3>
+
+              {/* Book 1 - An Elegant Puzzle */}
+              <div className="mb-6 pb-6 border-b border-gray-200">
                 <a
-                  href="https://www.linkedin.com/feed/update/urn:li:activity:7255636517673398273/"
+                  href="https://lethain.com/elegant-puzzle/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:underline text-sm text-center px-4"
+                  className="block group"
                 >
-                  Watch Video on LinkedIn →
+                  <div className="bg-gray-50 border border-gray-200 rounded p-4 hover:bg-gray-100 transition-colors">
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-16 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded flex items-center justify-center text-2xl">
+                        📘
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-blue-700 group-hover:text-blue-900 mb-1">
+                          An Elegant Puzzle
+                        </h4>
+                        <p className="text-xs text-gray-600 mb-2">Will Larson</p>
+                        <p className="text-xs text-gray-700 leading-relaxed">
+                          Systems of Engineering Management - Essential reading for technical leaders navigating organizational complexity.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </a>
               </div>
-              <p className="text-xs text-gray-600">DevOps & Cloud Architecture showcase</p>
+
+              {/* Book 2 - Staff Engineer */}
+              <div>
+                <a
+                  href="https://lethain.com/staff-engineer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
+                  <div className="bg-gray-50 border border-gray-200 rounded p-4 hover:bg-gray-100 transition-colors">
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-16 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded flex items-center justify-center text-2xl">
+                        📗
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-blue-700 group-hover:text-blue-900 mb-1">
+                          Staff Engineer
+                        </h4>
+                        <p className="text-xs text-gray-600 mb-2">Will Larson</p>
+                        <p className="text-xs text-gray-700 leading-relaxed">
+                          Leadership beyond the management track - Insights into the Staff+ engineer career path and technical leadership.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            {/* Books Section */}
+            {/* Technical Books */}
             <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-3">Recommended Reading</h3>
+              <h3 className="font-semibold mb-3">Technical Resources</h3>
               <div className="space-y-3">
                 <a
                   href="https://sre.google/books/"
@@ -368,7 +457,7 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/andresmunozb" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+                  <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
                     Connect on LinkedIn
                   </a>
                 </li>
@@ -381,7 +470,7 @@ export default function Home() {
               <div className="text-gray-300 space-y-1">
                 <div>andres@devops-architect</div>
                 <div>role: Expert Solutions Architect</div>
-                <div>phd: Computer Science</div>
+                <div>focus: Cloud & DevOps</div>
                 <div className="mt-2">
                   <a href="https://github.com/andresKillem" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
                     github.com/andresKillem
@@ -395,20 +484,17 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer id="contact" className="border-t border-gray-200 mt-16 py-8">
+      <footer className="border-t border-gray-200 mt-16 py-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap gap-6 text-sm text-gray-600 mb-4">
             <a href="https://github.com/andresKillem" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/andresmunozb" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
+            <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
               LinkedIn
             </a>
             <a href="https://medium.com/@andresmunozb" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
               Medium
-            </a>
-            <a href="mailto:andreco87@hotmail.com" className="hover:text-gray-900">
-              Email
             </a>
           </div>
           <p className="text-sm text-gray-500">© 2025 Andrés Muñoz</p>
