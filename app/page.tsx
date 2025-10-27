@@ -10,6 +10,7 @@ export default function Home() {
             </div>
             <div className="flex gap-6 text-sm">
               <a href="#writing" className="text-gray-600 hover:text-gray-900">Writing</a>
+              <a href="/learning" className="text-gray-600 hover:text-gray-900">Learning</a>
               <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
               <a href="#experience" className="text-gray-600 hover:text-gray-900">Experience</a>
               <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">LinkedIn</a>
@@ -411,7 +412,7 @@ export default function Home() {
                   href="https://lethain.com/elegant-puzzle/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group"
+                  className="block group mb-2"
                 >
                   <div className="bg-gray-50 border border-gray-200 rounded p-4 hover:bg-gray-100 transition-colors">
                     <div className="flex gap-3">
@@ -429,6 +430,12 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+                </a>
+                <a
+                  href="/learning/elegant-puzzle"
+                  className="block text-center bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded py-2 px-3 text-xs text-blue-700 font-semibold transition-colors"
+                >
+                  📚 Ver mi estudio completo →
                 </a>
               </div>
 
