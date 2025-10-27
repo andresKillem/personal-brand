@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import MermaidDiagram from '@/components/MermaidDiagram';
 
 export default function ElegantPuzzlePage() {
@@ -259,13 +260,13 @@ export default function ElegantPuzzlePage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
             <div className="text-sm text-gray-600">
-              <a href="/" className="hover:text-gray-900">{currentLang.home}</a>
+              <Link href="/" className="hover:text-gray-900">{currentLang.home}</Link>
               <span className="mx-2">/</span>
-              <a href="/learning" className="hover:text-gray-900">{currentLang.learning}</a>
+              <Link href="/learning" className="hover:text-gray-900">{currentLang.learning}</Link>
             </div>
             <div className="flex gap-6 text-sm items-center">
-              <a href="/#writing" className="text-gray-600 hover:text-gray-900">{currentLang.writing}</a>
-              <a href="/learning" className="text-gray-900 font-semibold">{currentLang.learning}</a>
+              <Link href="/#writing" className="text-gray-600 hover:text-gray-900">{currentLang.writing}</Link>
+              <Link href="/learning" className="text-gray-900 font-semibold">{currentLang.learning}</Link>
 
               {/* Language Toggle */}
               <button
@@ -617,7 +618,7 @@ export default function ElegantPuzzlePage() {
       <footer className="border-t border-gray-200 mt-16 py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-sm text-gray-600">
-            Study by <a href="/" className="text-blue-700 hover:underline font-semibold">Andrés Muñoz</a>
+            Study by <Link href="/" className="text-blue-700 hover:underline font-semibold">Andrés Muñoz</Link>
           </p>
           <p className="text-sm text-gray-500 mt-2">
             Based on &quot;An Elegant Puzzle&quot; by Will Larson

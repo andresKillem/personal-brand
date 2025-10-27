@@ -1,15 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface MermaidDiagramProps {
   chart: string;
   className?: string;
 }
 
+interface MermaidAPI {
+  initialize: (config: Record<string, unknown>) => void;
+  render: (id: string, text: string) => Promise<{ svg: string }>;
+}
+
 declare global {
   interface Window {
-    mermaid?: any;
+    mermaid?: MermaidAPI;
   }
 }
 

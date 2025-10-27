@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function LearningPage() {
   const [language, setLanguage] = useState<'en' | 'es'>('en');
@@ -77,13 +78,13 @@ export default function LearningPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
             <div className="text-sm text-gray-600">
-              <a href="/" className="hover:text-gray-900">{currentLang.home}</a>
+              <Link href="/" className="hover:text-gray-900">{currentLang.home}</Link>
             </div>
             <div className="flex gap-6 text-sm items-center">
-              <a href="/#writing" className="text-gray-600 hover:text-gray-900">{currentLang.writing}</a>
-              <a href="/learning" className="text-gray-900 font-semibold">{currentLang.learning}</a>
-              <a href="/#projects" className="text-gray-600 hover:text-gray-900">{currentLang.projects}</a>
-              <a href="/#experience" className="text-gray-600 hover:text-gray-900">{currentLang.experience}</a>
+              <Link href="/#writing" className="text-gray-600 hover:text-gray-900">{currentLang.writing}</Link>
+              <Link href="/learning" className="text-gray-900 font-semibold">{currentLang.learning}</Link>
+              <Link href="/#projects" className="text-gray-600 hover:text-gray-900">{currentLang.projects}</Link>
+              <Link href="/#experience" className="text-gray-600 hover:text-gray-900">{currentLang.experience}</Link>
 
               {/* Language Toggle */}
               <button
@@ -216,14 +217,14 @@ export default function LearningPage() {
               <h3 className="font-semibold mb-3">{currentLang.quickLinks}</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="/learning/elegant-puzzle" className="text-blue-700 hover:underline">
+                  <Link href="/learning/elegant-puzzle" className="text-blue-700 hover:underline">
                     {currentLang.elegantPuzzleLink}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/" className="text-blue-700 hover:underline">
+                  <Link href="/" className="text-blue-700 hover:underline">
                     {currentLang.backHome}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
