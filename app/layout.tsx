@@ -47,9 +47,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Andrés Muñoz",
+    "jobTitle": "Principal Solutions Architect",
+    "url": "https://andresmunoz.tech",
+    "sameAs": [
+      "https://www.linkedin.com/in/andres-munoz/",
+      "https://github.com/andresKillem"
+    ],
+    "description": "Expert Solutions Architect and DevOps leader specializing in Cloud Architecture and FinTech."
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   );
 }
