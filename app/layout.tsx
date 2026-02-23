@@ -5,20 +5,17 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Andrés Muñoz - Principal DevOps Architect & SRE | Cloud Solutions Expert",
-  description: "10+ years of experience architecting cloud-native platforms. Expert in AWS, Kubernetes, DevOps transformation, SRE practices, and cloud cost optimization. Available for new opportunities.",
+  title: "Andrés Muñoz | Principal Solutions Architect & AI Expert",
+  description: "Architecting high-scale cloud platforms, FinTech ecosystems (PilasFi, Deuna), and AI-driven solutions. 10+ years of technical leadership in AWS, Kubernetes, and DevOps.",
   keywords: [
+    "Andrés Muñoz",
+    "PilasFi",
+    "Solutions Architect",
     "DevOps Architect",
-    "Cloud Solutions Architect",
-    "AWS Expert",
-    "Kubernetes",
-    "DevOps Transformation",
-    "Site Reliability Engineering",
-    "FinTech DevOps",
-    "Cloud Native",
-    "Terraform",
-    "CI/CD",
-    "Andrés Muñoz"
+    "Cloud Expert",
+    "FinTech Infrastructure",
+    "AWS Professional",
+    "Kubernetes at Scale"
   ],
   authors: [{ name: "Andrés Muñoz" }],
   creator: "Andrés Muñoz",

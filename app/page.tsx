@@ -1,3 +1,5 @@
+import { AIChatbot } from "@/components/AIChatbot";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
@@ -85,6 +87,20 @@ export default function Home() {
               <h2 className="text-3xl font-serif mb-6">Selected Projects</h2>
 
               <div className="space-y-6">
+                <div className="border-l-4 border-cyan-500 pl-4">
+                  <h3 className="text-lg font-semibold mb-2">FinTech Platform - PilasFi.com</h3>
+                  <p className="text-gray-700 mb-2">
+                    Architected and developed a next-generation financial management platform focused on automation and high-performance user experience.
+                    Engineered a unified financial engine using an event-driven architecture, real-time transaction processing, and a high-performance React-based frontend.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Impact:</strong> 98% Performance Score, Real-time Reconciliation, 10K+ Active Users
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    <strong>Tech:</strong> Next.js, TypeScript, Node.js, PostgreSQL, AWS, Redis, WebSockets
+                  </p>
+                </div>
+
                 <div className="border-l-4 border-blue-500 pl-4">
                   <h3 className="text-lg font-semibold mb-2">FinTech Payment Infrastructure @ Deuna</h3>
                   <p className="text-gray-700 mb-2">
@@ -561,6 +577,8 @@ export default function Home() {
           </aside>
         </div>
       </div>
+
+      <AIChatbot />
 
       {/* Footer */}
       <footer className="border-t border-gray-200 mt-16 py-8">
