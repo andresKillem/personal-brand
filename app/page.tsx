@@ -391,9 +391,9 @@ export default function Home() {
             <div className="bg-gray-900 p-4 rounded-lg font-mono text-xs">
               <div className="text-green-400 mb-2">$ whoami</div>
               <div className="text-gray-300 space-y-1">
-                <div>andres@devops-architect</div>
-                <div>role: Expert Solutions Architect</div>
-                <div>focus: Cloud & DevOps</div>
+                <div>andres@ai-engineer</div>
+                <div>role: Head of Infra & SRE — Agentic Ops</div>
+                <div>focus: LLM agents · RAG · evals</div>
                 <div className="mt-2">
                   <a href="https://github.com/andresKillem" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
                     github.com/andresKillem
