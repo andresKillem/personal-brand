@@ -121,22 +121,22 @@ export default function Home() {
               <div className="space-y-12">
                 <div className="relative pl-8 border-l-2 border-gray-100 group">
                   <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-blue-600 transition-all group-hover:scale-125"></div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">Expert Solutions Architect @ Deuna</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">Head of Infrastructure &amp; SRE — Agentic Operations @ Deuna</h3>
                   <p className="text-blue-600 font-bold text-[10px] uppercase tracking-widest mb-4">2023 - Present • Remote</p>
                   <ul className="space-y-3 text-gray-600 leading-relaxed text-sm">
-                    <li>• Design AWS-based microservices payment systems for FinTech compliance</li>
-                    <li>• Architect mobile payment platforms prioritizing security and user experience</li>
-                    <li>• Implement robust security frameworks for sensitive payment data protection</li>
-                    <li>• Optimize performance through continuous monitoring and system integration</li>
+                    <li>• Run the infrastructure &amp; SRE operation through AI agents: incident triage, remediation, and FinOps via multi-agent orchestration + MCP servers</li>
+                    <li>• Built an agentic pipeline automating the delivery lifecycle (Jira → AI code-gen → tests → PR) with human-in-the-loop, cutting manual overhead ~40%</li>
+                    <li>• Multi-provider LLM integration (Claude, OpenAI, Gemini) with structured output, retries, and fallback; token/cost optimization</li>
+                    <li>• Extended SLO/SLI and Datadog observability to AI behavior, latency, and cost across the platform</li>
                   </ul>
                 </div>
 
                 <div className="relative pl-8 border-l-2 border-gray-100 group">
                   <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-gray-200 group-hover:border-blue-300 transition-all group-hover:scale-125"></div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">Senior DevOps Engineer @ Housecall Pro</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">Senior DevOps / Platform Engineer @ Housecall Pro</h3>
                   <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mb-4">2021 - 2025 • Remote</p>
                   <ul className="space-y-3 text-gray-600 leading-relaxed text-sm">
-                    <li>• Led enterprise DevOps transformation for SaaS platform serving millions of users</li>
+                    <li>• Led enterprise DevOps/platform transformation for a SaaS product serving millions of users</li>
                     <li>• Architected multi-cloud solutions (AWS/Azure) with global RDS replication</li>
                     <li>• Partnered with C-Level leadership to reduce annual cloud spend by 20%</li>
                   </ul>
