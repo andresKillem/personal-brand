@@ -1,8 +1,10 @@
 import { AIChatbot } from "@/components/AIChatbot";
 import {
   AgenticSREDiagram,
+  LangGraphDiagram,
   GatewayDiagram,
   RAGDiagram,
+  LangChainDiagram,
   PaymentsDiagram,
 } from "@/components/ArchitectureSchematics";
 import { ArrowUpRight } from "lucide-react";
@@ -17,20 +19,34 @@ const architectures = [
   },
   {
     no: "A2",
+    title: "LangGraph Multi-Agent",
+    caption:
+      "A StateGraph supervisor routes through conditional edges to Planner, Worker, and Tool nodes — each updating shared state and cycling back until the task is done.",
+    Diagram: LangGraphDiagram,
+  },
+  {
+    no: "A3",
     title: "Multi-Provider LLM Gateway",
     caption:
       "A cheap classifier routes to a Portkey-style gateway with a fallback chain across Claude, GPT, and Gemini — balancing quality, latency, and cost.",
     Diagram: GatewayDiagram,
   },
   {
-    no: "A3",
+    no: "A4",
     title: "RAG · Retrieval Stack",
     caption:
       "Hybrid grounding across Qdrant vectors, a Neo4j knowledge graph, and Typesense full-text — reranked with Cohere into a cited, trustworthy answer.",
     Diagram: RAGDiagram,
   },
   {
-    no: "A4",
+    no: "A5",
+    title: "LangChain LCEL Pipeline",
+    caption:
+      "Composable retrieval-augmented chains — prompt | model | parser — where a retriever injects grounded context and the parser returns typed, structured output.",
+    Diagram: LangChainDiagram,
+  },
+  {
+    no: "A6",
     title: "Event-Driven Payments",
     caption:
       "The platform foundation: PCI-DSS microservices over an event bus (SNS/SQS/Kafka) feeding a ledger and real-time reconciliation at 1.5K+ TPS.",
@@ -117,25 +133,41 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-6">
         {/* ---------- Hero ---------- */}
-        <section className="pt-20 pb-16 md:pt-28 md:pb-24 rise">
-          <div className="flex items-center gap-3 mb-10">
+        <section className="pt-20 pb-16 md:pt-24 md:pb-20 rise">
+          <div className="flex items-center gap-3 mb-12">
             <span className="label">No.01 — AI Engineering</span>
             <span className="rule flex-1" />
-            <span className="label text-accent">Open to roles</span>
+            <span className="label text-accent">● Open to roles</span>
           </div>
 
-          <h1 className="display-xl font-display max-w-3xl">
-            Architecting{" "}
-            <span className="italic text-accent">Elegance</span>
-            <br />
-            in Chaos.
+          <p className="label mb-5">AI Engineer · LLM Systems · Platform &amp; SRE</p>
+
+          <h1 className="display-lg font-display max-w-3xl">
+            Building agent systems that
+            <span className="italic text-accent"> hold up </span>
+            in production.
           </h1>
 
-          <p className="mt-8 text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
-            AI Engineer building production agent systems — multi-provider
-            routing, RAG, and evals — on a deep Cloud, Platform &amp; SRE
-            foundation.
+          {/* Abstract — the substance */}
+          <p className="mt-7 text-lg md:text-xl text-ink-soft max-w-3xl leading-relaxed">
+            I design multi-agent orchestration (LangGraph supervisor–worker),
+            multi-provider routing behind a Portkey gateway, and hybrid retrieval
+            across vectors, a knowledge graph, and rerank — then make quality a{" "}
+            <span className="text-ink italic">number</span>, not a feeling, with
+            golden-dataset evals and Langfuse tracing. All on a platform/SRE
+            foundation hardened in fintech at 1,500+ TPS.
           </p>
+
+          {/* Focus areas */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 label">
+            <span>Agent orchestration</span>
+            <span className="text-ink-faint/50">/</span>
+            <span>Retrieval &amp; grounding</span>
+            <span className="text-ink-faint/50">/</span>
+            <span>Evals &amp; observability</span>
+            <span className="text-ink-faint/50">/</span>
+            <span>Platform &amp; SRE</span>
+          </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
@@ -154,6 +186,10 @@ export default function Home() {
               LinkedIn
             </a>
           </div>
+
+          <p className="mt-10 font-display italic text-ink-faint">
+            — Architecting elegance in chaos.
+          </p>
 
           {/* Stats — editorial row, hairline-divided */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t border-line">

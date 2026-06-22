@@ -195,3 +195,69 @@ export function PaymentsDiagram() {
     </svg>
   );
 }
+
+/* ---------- 5 · LangGraph multi-agent (StateGraph) ---------- */
+export function LangGraphDiagram() {
+  return (
+    <svg viewBox="0 0 640 300" {...svgProps} role="img" aria-label="LangGraph StateGraph multi-agent diagram">
+      <Defs />
+      <Node x={18} y={130} w={64} h={40} title="START" delay={0} />
+      <Pipe d="M 82 150 H 190" delay={0.15} />
+      <Node x={190} y={118} w={140} h={64} title="Supervisor" sub="conditional router" accent delay={0.2} />
+
+      {/* conditional edges (fan-out) */}
+      <Pipe d="M 330 134 C 392 134 392 58 456 58" delay={0.42} />
+      <Pipe d="M 330 150 H 456" delay={0.46} />
+      <Pipe d="M 330 166 C 392 166 392 240 456 240" delay={0.5} />
+
+      <Node x={456} y={36} w={150} title="Planner" sub="decompose" delay={0.5} />
+      <Node x={456} y={128} w={150} title="Worker" sub="tool-calling" delay={0.55} />
+      <Node x={456} y={218} w={150} title="Tools" sub="functions" delay={0.6} />
+
+      {/* cycle back to supervisor (LangGraph's signature) */}
+      <Pipe d="M 456 138 C 396 104 360 100 332 120" delay={0.82} dashed accent />
+      <text x={372} y={96} fontFamily="'JetBrains Mono', monospace" fontSize="8" fill={ACCENT}>↩ loop until done</text>
+
+      {/* terminal */}
+      <Node x={206} y={236} w={58} h={28} title="END" delay={0.7} />
+      <Pipe d="M 234 182 V 236" delay={0.74} dashed />
+
+      <line x1="18" y1="288" x2="620" y2="288" stroke="rgba(20,17,15,0.14)" />
+      <text x="18" y="282" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
+        STATEGRAPH · CONDITIONAL EDGES · CYCLES · SHARED STATE
+      </text>
+    </svg>
+  );
+}
+
+/* ---------- 6 · LangChain LCEL pipeline ---------- */
+export function LangChainDiagram() {
+  const pipe = (x: number) => (
+    <text x={x} y={120} textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="22" fill={ACCENT}>|</text>
+  );
+  return (
+    <svg viewBox="0 0 680 230" {...svgProps} role="img" aria-label="LangChain LCEL pipeline diagram">
+      <Defs />
+      {/* retrieval feeding context into the prompt */}
+      <Node x={150} y={20} w={104} h={40} title="Retriever" sub="vector store" delay={0.25} />
+      <Pipe d="M 202 60 V 96" delay={0.38} dashed />
+
+      <Node x={16} y={96} w={92} h={46} title="Question" delay={0} />
+      <Pipe d="M 108 119 H 150" delay={0.15} />
+
+      <Node x={150} y={96} w={104} h={46} title="Prompt" delay={0.2} />
+      {pipe(270)}
+      <Node x={286} y={96} w={104} h={46} title="Model" sub="LLM" accent delay={0.32} />
+      {pipe(406)}
+      <Node x={422} y={96} w={104} h={46} title="Parser" sub="structured" delay={0.44} />
+
+      <Pipe d="M 526 119 H 568" delay={0.54} />
+      <Node x={568} y={96} w={96} h={46} title="Answer" delay={0.58} />
+
+      <line x1="16" y1="214" x2="664" y2="214" stroke="rgba(20,17,15,0.14)" />
+      <text x="16" y="208" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
+        LCEL · prompt | model | parser · RETRIEVAL-AUGMENTED
+      </text>
+    </svg>
+  );
+}
