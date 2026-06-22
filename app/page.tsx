@@ -1,3 +1,5 @@
+"use client";
+
 import { AIChatbot } from "@/components/AIChatbot";
 import { ProjectBentoGrid } from "@/components/ProjectBentoGrid";
 import { RecruiterGate } from "@/components/RecruiterGate";
