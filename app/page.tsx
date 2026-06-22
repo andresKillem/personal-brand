@@ -36,21 +36,21 @@ export default function Home() {
             {/* Hero Section */}
             <section className="mb-24">
               <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-8 border border-blue-100 shadow-sm shadow-blue-50">
-                <Shield className="w-3 h-3" /> Available for Principal Architect Roles
+                <Shield className="w-3 h-3" /> Available for AI Engineer / LLM Systems Roles
               </div>
               <h1 className="text-6xl lg:text-8xl font-serif font-bold tracking-tight text-gray-900 mb-8 leading-[0.9]">
                 Architecting <br/><span className="text-blue-600 italic">Elegance</span> in Chaos.
               </h1>
               <p className="text-2xl text-gray-500 font-medium mb-10 leading-relaxed max-w-2xl">
-                Expert Solutions Architect, DevOps & SRE. Specialized in AWS multi-account architectures and high-scale FinTech systems.
+                AI Engineer &amp; LLM Systems builder. Production agent systems — multi-provider routing, RAG, and evals — on a deep Cloud / Platform &amp; SRE foundation.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
                 {[
-                  { label: "Uptime", value: "99.99%", icon: <Zap className="w-4 h-4 text-orange-500"/> },
-                  { label: "Reduction", value: "40% MTTR", icon: <Target className="w-4 h-4 text-green-500"/> },
-                  { label: "Scale", value: "1.5K TPS", icon: <BarChart3 className="w-4 h-4 text-blue-500"/> },
-                  { label: "Cost", value: "-20%", icon: <Zap className="w-4 h-4 text-cyan-500"/> }
+                  { label: "Dev Overhead", value: "-40%", icon: <Zap className="w-4 h-4 text-orange-500"/> },
+                  { label: "Providers", value: "Multi-LLM", icon: <Target className="w-4 h-4 text-green-500"/> },
+                  { label: "Uptime", value: "99.99%", icon: <BarChart3 className="w-4 h-4 text-blue-500"/> },
+                  { label: "Grounded", value: "RAG + Evals", icon: <Zap className="w-4 h-4 text-cyan-500"/> }
                 ].map((stat, i) => (
                   <div key={i} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
                     <div className="flex items-center gap-2 mb-1">
