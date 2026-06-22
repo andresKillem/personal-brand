@@ -1,432 +1,394 @@
-"use client";
-
 import { AIChatbot } from "@/components/AIChatbot";
-import { ProjectBentoGrid } from "@/components/ProjectBentoGrid";
-import { RecruiterGate } from "@/components/RecruiterGate";
-import { 
-  Shield, Zap, Target, BarChart3, ChevronRight, Lock, 
-  ExternalLink, Github, Linkedin, ArrowRight 
-} from "lucide-react";
+import {
+  AgenticSREDiagram,
+  GatewayDiagram,
+  RAGDiagram,
+  PaymentsDiagram,
+} from "@/components/ArchitectureSchematics";
+import { ArrowUpRight } from "lucide-react";
+
+const architectures = [
+  {
+    no: "A1",
+    title: "Agentic SRE Operations",
+    caption:
+      "The infra & SRE operation run by agents — a supervisor routes incidents to triage, remediation, and FinOps specialists through MCP tools, human-in-the-loop.",
+    Diagram: AgenticSREDiagram,
+  },
+  {
+    no: "A2",
+    title: "Multi-Provider LLM Gateway",
+    caption:
+      "A cheap classifier routes to a Portkey-style gateway with a fallback chain across Claude, GPT, and Gemini — balancing quality, latency, and cost.",
+    Diagram: GatewayDiagram,
+  },
+  {
+    no: "A3",
+    title: "RAG · Retrieval Stack",
+    caption:
+      "Hybrid grounding across Qdrant vectors, a Neo4j knowledge graph, and Typesense full-text — reranked with Cohere into a cited, trustworthy answer.",
+    Diagram: RAGDiagram,
+  },
+  {
+    no: "A4",
+    title: "Event-Driven Payments",
+    caption:
+      "The platform foundation: PCI-DSS microservices over an event bus (SNS/SQS/Kafka) feeding a ledger and real-time reconciliation at 1.5K+ TPS.",
+    Diagram: PaymentsDiagram,
+  },
+];
+
+const projects = [
+  {
+    no: "01",
+    title: "AI Delivery Pipeline",
+    org: "Deuna",
+    desc: "Agentic automation of the software lifecycle — Jira → AI code-gen → tests → PR with human review. ~40% less manual overhead.",
+    tags: ["Claude", "MCP", "n8n", "FastAPI"],
+  },
+  {
+    no: "02",
+    title: "Cloud Cost Optimizer",
+    org: "Open Source",
+    desc: "FinOps engine ingesting AWS/Azure billing, detecting idle resources via rules, generating safe decommission plans. MCP server + Claude Agent SDK sub-agents.",
+    tags: ["Python", "FastAPI", "boto3", "MCP"],
+    link: "https://github.com/andresKillem/wk-cloud-cost-optimizer",
+  },
+  {
+    no: "03",
+    title: "AI Engineer Lab",
+    org: "Open Source",
+    desc: "A runnable, line-by-line reference for production LLM systems: routing, agents, RAG, evals — real APIs, graceful degradation, interview-grade notes.",
+    tags: ["Python", "RAG", "Evals", "Agents"],
+    link: "https://github.com/andresKillem/ai-engineer-interview-lab",
+  },
+  {
+    no: "04",
+    title: "Payment Infrastructure",
+    org: "Deuna · Kushki",
+    desc: "Event-driven microservices processing 1,500+ TPS with PCI-DSS compliance — from a 100 TPS monolith to 99.95% success at 450ms latency.",
+    tags: ["AWS", "EKS", "Kafka", "Go"],
+  },
+];
+
+const skills = [
+  {
+    title: "Agentic AI & Orchestration",
+    desc: "Multi-agent systems (supervisor + specialist), tool & function calling, MCP servers, classifier routing.",
+  },
+  {
+    title: "RAG & Retrieval",
+    desc: "Embeddings, vector search (Qdrant), reranking (Cohere), knowledge graphs (Neo4j), grounded answers.",
+  },
+  {
+    title: "LLM Evals & Observability",
+    desc: "Golden datasets, prompt-regression, hallucination & safety checks, Langfuse and Datadog tracing.",
+  },
+  {
+    title: "Cloud & Platform Foundation",
+    desc: "AWS, Kubernetes, Terraform, GitOps, SRE — the resilient base beneath the AI.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Navigation */}
-      <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <nav className="flex justify-between items-center">
-            <div className="text-sm font-bold text-gray-900 tracking-tighter uppercase">
-              <a href="#" className="hover:text-blue-600 transition-colors">Andrés Muñoz</a>
-            </div>
-            <div className="flex gap-6 text-xs font-bold uppercase tracking-widest">
-              <a href="#projects" className="text-gray-500 hover:text-gray-900 transition-colors">Projects</a>
-              <a href="#experience" className="text-gray-500 hover:text-gray-900 transition-colors">Experience</a>
-              <a href="#writing" className="text-gray-500 hover:text-gray-900 transition-colors">Writing</a>
-              <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors">Connect</a>
-            </div>
+    <div className="min-h-screen bg-paper text-ink">
+      {/* ---------- Header ---------- */}
+      <header className="sticky top-0 z-50 bg-paper/85 backdrop-blur-sm border-b border-line">
+        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+          <a href="#" className="font-display text-base tracking-tight">
+            Andrés&nbsp;Muñoz
+          </a>
+          <nav className="flex items-center gap-7 label">
+            <a href="#architectures" className="hover:text-ink transition-colors">Architectures</a>
+            <a href="#work" className="hover:text-ink transition-colors">Work</a>
+            <a href="#path" className="hover:text-ink transition-colors">Path</a>
+            <a
+              href="https://www.linkedin.com/in/andres-munoz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:opacity-70 transition-opacity"
+            >
+              Connect
+            </a>
           </nav>
         </div>
       </header>
 
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24">
+      <main className="max-w-5xl mx-auto px-6">
+        {/* ---------- Hero ---------- */}
+        <section className="pt-20 pb-16 md:pt-28 md:pb-24 rise">
+          <div className="flex items-center gap-3 mb-10">
+            <span className="label">No.01 — AI Engineering</span>
+            <span className="rule flex-1" />
+            <span className="label text-accent">Open to roles</span>
+          </div>
 
-          {/* Main Content Column */}
-          <main className="lg:col-span-2">
+          <h1 className="display-xl font-display max-w-3xl">
+            Architecting{" "}
+            <span className="italic text-accent">Elegance</span>
+            <br />
+            in Chaos.
+          </h1>
 
-            {/* Hero Section */}
-            <section className="mb-24">
-              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-8 border border-blue-100 shadow-sm shadow-blue-50">
-                <Shield className="w-3 h-3" /> Available for AI Engineer / LLM Systems Roles
-              </div>
-              <h1 className="text-6xl lg:text-8xl font-serif font-bold tracking-tight text-gray-900 mb-8 leading-[0.9]">
-                Architecting <br/><span className="text-blue-600 italic">Elegance</span> in Chaos.
-              </h1>
-              <p className="text-2xl text-gray-500 font-medium mb-10 leading-relaxed max-w-2xl">
-                AI Engineer &amp; LLM Systems builder. Production agent systems — multi-provider routing, RAG, and evals — on a deep Cloud / Platform &amp; SRE foundation.
-              </p>
+          <p className="mt-8 text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
+            AI Engineer building production agent systems — multi-provider
+            routing, RAG, and evals — on a deep Cloud, Platform &amp; SRE
+            foundation.
+          </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                {[
-                  { label: "Dev Overhead", value: "-40%", icon: <Zap className="w-4 h-4 text-orange-500"/> },
-                  { label: "Providers", value: "Multi-LLM", icon: <Target className="w-4 h-4 text-green-500"/> },
-                  { label: "Uptime", value: "99.99%", icon: <BarChart3 className="w-4 h-4 text-blue-500"/> },
-                  { label: "Grounded", value: "RAG + Evals", icon: <Zap className="w-4 h-4 text-cyan-500"/> }
-                ].map((stat, i) => (
-                  <div key={i} className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                    <div className="flex items-center gap-2 mb-1">
-                      {stat.icon}
-                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">{stat.label}</span>
-                    </div>
-                    <div className="text-xl font-bold text-gray-900">{stat.value}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <button 
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-8 py-4 bg-gray-900 text-white font-bold rounded-2xl hover:bg-blue-600 transition-all flex items-center gap-2 shadow-xl shadow-gray-200"
-                >
-                  View Case Studies <ChevronRight className="w-4 h-4" />
-                </button>
-                <a 
-                  href="https://www.linkedin.com/in/andres-munoz/"
-                  target="_blank"
-                  className="px-8 py-4 bg-white border border-gray-200 text-gray-900 font-bold rounded-2xl hover:bg-gray-50 transition-all flex items-center gap-2"
-                >
-                  LinkedIn <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            </section>
-
-            <div className="border-t border-gray-100 my-24"></div>
-
-            {/* Trusted By / Clients */}
-            <section className="mb-24 opacity-60 hover:opacity-100 transition-opacity">
-              <h2 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-10 text-center">Impactful contributions for world-class organizations</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center filter grayscale contrast-125">
-                <img src="/logos/deuna-logo.png" alt="Deuna" className="h-8 md:h-10 object-contain" />
-                <img src="/logos/housecallpro-logo.png" alt="Housecall Pro" className="h-8 md:h-10 object-contain" />
-                <img src="/logos/kushki-logo.png" alt="Kushki" className="h-8 md:h-10 object-contain" />
-                <img src="/logos/telefonica-logo.png" alt="Telefonica" className="h-8 md:h-10 object-contain" />
-              </div>
-            </section>
-
-            {/* Projects */}
-            <section id="projects" className="mb-24 scroll-mt-24">
-              <div className="flex items-end justify-between mb-12">
-                <div>
-                  <h2 className="text-4xl font-serif font-bold text-gray-900 mb-2">Selected Case Studies</h2>
-                  <p className="text-gray-500">Documenting transformations and high-impact architectures.</p>
-                </div>
-                <div className="hidden md:flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
-                  <Lock className="w-3.5 h-3.5" /> Confidential Data Available
-                </div>
-              </div>
-
-              <RecruiterGate>
-                <ProjectBentoGrid />
-              </RecruiterGate>
-            </section>
-
-            <div className="border-t border-gray-100 my-24"></div>
-
-            {/* Current Work */}
-            <section id="experience" className="mb-24">
-              <div className="flex items-center gap-4 mb-8">
-                <h2 className="text-3xl font-serif font-bold text-gray-900">Professional Path</h2>
-                <div className="h-px flex-1 bg-gray-100"></div>
-              </div>
-
-              <div className="space-y-12">
-                <div className="relative pl-8 border-l-2 border-gray-100 group">
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-blue-600 transition-all group-hover:scale-125"></div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">Head of Infrastructure &amp; SRE — Agentic Operations @ Deuna</h3>
-                  <p className="text-blue-600 font-bold text-[10px] uppercase tracking-widest mb-4">2023 - Present • Remote</p>
-                  <ul className="space-y-3 text-gray-600 leading-relaxed text-sm">
-                    <li>• Run the infrastructure &amp; SRE operation through AI agents: incident triage, remediation, and FinOps via multi-agent orchestration + MCP servers</li>
-                    <li>• Built an agentic pipeline automating the delivery lifecycle (Jira → AI code-gen → tests → PR) with human-in-the-loop, cutting manual overhead ~40%</li>
-                    <li>• Multi-provider LLM integration (Claude, OpenAI, Gemini) with structured output, retries, and fallback; token/cost optimization</li>
-                    <li>• Extended SLO/SLI and Datadog observability to AI behavior, latency, and cost across the platform</li>
-                  </ul>
-                </div>
-
-                <div className="relative pl-8 border-l-2 border-gray-100 group">
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-gray-200 group-hover:border-blue-300 transition-all group-hover:scale-125"></div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">Senior DevOps / Platform Engineer @ Housecall Pro</h3>
-                  <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mb-4">2021 - 2025 • Remote</p>
-                  <ul className="space-y-3 text-gray-600 leading-relaxed text-sm">
-                    <li>• Led enterprise DevOps/platform transformation for a SaaS product serving millions of users</li>
-                    <li>• Architected multi-cloud solutions (AWS/Azure) with global RDS replication</li>
-                    <li>• Partnered with C-Level leadership to reduce annual cloud spend by 20%</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-
-            <div className="border-t border-gray-100 my-24"></div>
-
-            {/* Strategy & Skills */}
-            <section id="skills" className="mb-24">
-              <h2 className="text-3xl font-serif font-bold text-gray-900 mb-12">Systemic Strategy</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  { title: "Agentic AI & Orchestration", desc: "Multi-agent (supervisor + specialist), tool/function calling, MCP servers, classifier routing.", icon: "🤖" },
-                  { title: "RAG & Retrieval", desc: "Embeddings, vector search (Qdrant), reranking (Cohere), knowledge graphs (Neo4j), grounding.", icon: "🔎" },
-                  { title: "LLM Evals & Observability", desc: "Golden datasets, prompt-regression, hallucination/safety checks, Langfuse + Datadog tracing.", icon: "📊" },
-                  { title: "Cloud & Platform Foundation", desc: "AWS, Kubernetes, Terraform, GitOps, SRE — the base under the AI.", icon: "☁️" }
-                ].map((skill, i) => (
-                  <div key={i} className="bg-gray-50 p-6 rounded-3xl border border-gray-100 flex gap-4 hover:border-blue-200 transition-colors">
-                    <div className="text-2xl">{skill.icon}</div>
-                    <div>
-                      <h4 className="font-bold text-gray-900 mb-1">{skill.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed">{skill.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <div className="border-t border-gray-100 my-24"></div>
-
-            {/* Writing */}
-            <section id="writing" className="mb-24">
-              <h2 className="text-3xl font-serif font-bold text-gray-900 mb-12">Technical Insights</h2>
-              <div className="space-y-8">
-                <div className="bg-orange-50/50 rounded-[2rem] p-10 border border-orange-100">
-                  <h3 className="text-2xl font-bold text-orange-900 mb-4">The Productivity Paradox of AI</h3>
-                  <p className="text-gray-700 leading-relaxed mb-6">
-                    &quot;Are we entering a productivity boom that elevates our capabilities, or a bubble that erodes our fundamental engineering muscle memory?&quot;
-                  </p>
-                  <a href="https://medium.com/@andresmunozb" target="_blank" className="inline-flex items-center gap-2 text-orange-700 font-bold text-sm uppercase tracking-wider">
-                    Read Thesis on Medium <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <a href="https://www.encora.com/insights/diving-deep-into-devsecops-key-considerations" target="_blank" className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-200 transition-colors group">
-                    <h4 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Diving Deep into DevSecOps</h4>
-                    <p className="text-xs text-gray-500">Key considerations for implementing DevSecOps at scale.</p>
-                  </a>
-                  <a href="https://medium.com/@andreco87/diving-deep-into-sre-responsibilities-sre-vs-devops-41f97f8cd597" target="_blank" className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-200 transition-colors group">
-                    <h4 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">SRE vs DevOps</h4>
-                    <p className="text-xs text-gray-500">Understanding the core responsibilities and overlaps.</p>
-                  </a>
-                </div>
-              </div>
-            </section>
-
-            <div className="border-t border-gray-100 my-24"></div>
-
-            {/* Final CTA */}
-            <section className="bg-blue-600 rounded-[3rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-200">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-50 -mr-32 -mt-32"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-400 rounded-full blur-3xl opacity-30 -ml-32 -mb-32"></div>
-              
-              <div className="relative z-10">
-                <h2 className="text-4xl lg:text-6xl font-serif font-bold mb-6">Ready to scale?</h2>
-                <p className="text-xl text-blue-100 mb-12 max-w-xl mx-auto opacity-90">
-                  I&apos;m currently open to new challenges at the Principal or Architect level. Let&apos;s build something resilient together.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <a 
-                    href="https://www.linkedin.com/in/andres-munoz/" 
-                    target="_blank"
-                    className="px-10 py-5 bg-white text-blue-600 font-bold rounded-2xl hover:scale-105 transition-all shadow-xl shadow-blue-900/20"
-                  >
-                    Schedule a Discovery Call
-                  </a>
-                  <a 
-                    href="mailto:andreco87@hotmail.com" 
-                    className="px-10 py-5 bg-blue-700 text-white font-bold rounded-2xl hover:bg-blue-800 transition-all border border-blue-500"
-                  >
-                    Send Direct Email
-                  </a>
-                </div>
-              </div>
-            </section>
-
-          </main>
-
-          {/* Sidebar */}
-          <aside className="lg:col-span-1 space-y-8">
-
-            {/* Author Card */}
-            <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-sm">
-              <img src="/profile.jpg" alt="Andrés Muñoz" className="w-20 h-20 rounded-2xl object-cover mb-6 grayscale hover:grayscale-0 transition-all" />
-              <p className="text-sm font-medium text-gray-900 mb-4 leading-relaxed">
-                Hi, I&apos;m <span className="font-bold">Andrés</span>. I transform infrastructure chaos into automated elegance for high-growth tech companies.
-              </p>
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-50">
-                <a href="https://github.com/andresKillem" target="_blank" className="text-gray-400 hover:text-gray-900"><Github className="w-5 h-5" /></a>
-                <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" className="text-gray-400 hover:text-blue-600"><Linkedin className="w-5 h-5" /></a>
-              </div>
-            </div>
-
-
-            {/* Recommended Reading */}
-            <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-4">Recommended Reading</h3>
-
-              {/* Book 1 - An Elegant Puzzle */}
-              <div className="mb-6 pb-6 border-b border-gray-200">
-                <a
-                  href="https://lethain.com/elegant-puzzle/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
-                  <div className="bg-gray-50 border border-gray-200 rounded p-4 hover:bg-gray-100 transition-colors">
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0 w-16 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded flex items-center justify-center text-2xl">
-                        📘
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-blue-700 group-hover:text-blue-900 mb-1">
-                          An Elegant Puzzle
-                        </h4>
-                        <p className="text-xs text-gray-600 mb-2">Will Larson</p>
-                        <p className="text-xs text-gray-700 leading-relaxed">
-                          Systems of Engineering Management - Essential reading for technical leaders navigating organizational complexity.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Book 2 - Staff Engineer */}
-              <div>
-                <a
-                  href="https://lethain.com/staff-engineer/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
-                  <div className="bg-gray-50 border border-gray-200 rounded p-4 hover:bg-gray-100 transition-colors">
-                    <div className="flex gap-3">
-                      <div className="flex-shrink-0 w-16 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded flex items-center justify-center text-2xl">
-                        📗
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-blue-700 group-hover:text-blue-900 mb-1">
-                          Staff Engineer
-                        </h4>
-                        <p className="text-xs text-gray-600 mb-2">Will Larson</p>
-                        <p className="text-xs text-gray-700 leading-relaxed">
-                          Leadership beyond the management track - Insights into the Staff+ engineer career path and technical leadership.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-
-            {/* Technical Books */}
-            <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-3">Technical Resources</h3>
-              <div className="space-y-3">
-                <a
-                  href="https://sre.google/books/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:bg-gray-50 p-2 rounded transition-colors"
-                >
-                  <div className="text-sm font-medium text-blue-700">Site Reliability Engineering</div>
-                  <div className="text-xs text-gray-600">Google SRE Book</div>
-                </a>
-                <a
-                  href="https://www.oreilly.com/library/view/terraform-up/9781492046899/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:bg-gray-50 p-2 rounded transition-colors"
-                >
-                  <div className="text-sm font-medium text-blue-700">Terraform: Up & Running</div>
-                  <div className="text-xs text-gray-600">Yevgeniy Brikman</div>
-                </a>
-                <a
-                  href="https://www.oreilly.com/library/view/kubernetes-up-and/9781492046523/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:bg-gray-50 p-2 rounded transition-colors"
-                >
-                  <div className="text-sm font-medium text-blue-700">Kubernetes: Up and Running</div>
-                  <div className="text-xs text-gray-600">Kelsey Hightower</div>
-                </a>
-              </div>
-            </div>
-
-            {/* Popular Links */}
-            <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-3">Popular</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    AWS Well-Architected Framework
-                  </a>
-                </li>
-                <li>
-                  <a href="https://12factor.net/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    The Twelve-Factor App
-                  </a>
-                </li>
-                <li>
-                  <a href="https://kubernetes.io/docs/concepts/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    Kubernetes Concepts
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.cncf.io/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    Cloud Native Computing Foundation
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Recent Links */}
-            <div className="bg-white p-4 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-3">Recent</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="https://github.com/andresKillem" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    My GitHub Projects
-                  </a>
-                </li>
-                <li>
-                  <a href="https://medium.com/@andresmunozb" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    Technical Articles on Medium
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
-                    Connect on LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Terminal Quick Reference */}
-            <div className="bg-gray-900 p-4 rounded-lg font-mono text-xs">
-              <div className="text-green-400 mb-2">$ whoami</div>
-              <div className="text-gray-300 space-y-1">
-                <div>andres@ai-engineer</div>
-                <div>role: Head of Infra & SRE — Agentic Ops</div>
-                <div>focus: LLM agents · RAG · evals</div>
-                <div className="mt-2">
-                  <a href="https://github.com/andresKillem" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
-                    github.com/andresKillem
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </aside>
-        </div>
-      </div>
-
-      <AIChatbot />
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-16 py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap gap-6 text-sm text-gray-600 mb-4">
-            <a href="https://github.com/andresKillem" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
-              GitHub
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="#architectures"
+              className="group inline-flex items-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-mono tracking-wide hover:bg-accent transition-colors"
+            >
+              View architectures
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
-            <a href="https://www.linkedin.com/in/andres-munoz/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
+            <a
+              href="https://www.linkedin.com/in/andres-munoz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-mono tracking-wide border border-ink hover:bg-ink hover:text-paper transition-colors"
+            >
               LinkedIn
             </a>
-            <a href="https://medium.com/@andresmunozb" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900">
-              Medium
+          </div>
+
+          {/* Stats — editorial row, hairline-divided */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t border-line">
+            {[
+              { v: "−40%", l: "Dev overhead" },
+              { v: "Multi-LLM", l: "Provider routing" },
+              { v: "99.99%", l: "Uptime" },
+              { v: "RAG + Evals", l: "Grounded & measured" },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className="py-5 pr-4 border-b border-line md:border-b-0 md:border-r last:border-r-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r"
+              >
+                <div className="font-display text-2xl md:text-3xl">{s.v}</div>
+                <div className="label mt-1">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------- Clients ---------- */}
+        <section className="py-10 border-t border-line">
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <span className="label shrink-0">Contributions for</span>
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 opacity-70 grayscale">
+              <img src="/logos/deuna-logo.png" alt="Deuna" className="h-6 object-contain" />
+              <img src="/logos/housecallpro-logo.png" alt="Housecall Pro" className="h-6 object-contain" />
+              <img src="/logos/kushki-logo.png" alt="Kushki" className="h-6 object-contain" />
+              <img src="/logos/telefonica-logo.png" alt="Telefónica" className="h-6 object-contain" />
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- Architectures ---------- */}
+        <section id="architectures" className="py-20 border-t border-line scroll-mt-16">
+          <div className="flex items-end justify-between mb-14">
+            <div>
+              <span className="label">No.02 — Systems</span>
+              <h2 className="display-lg font-display mt-3">Selected Architectures</h2>
+            </div>
+            <p className="hidden md:block text-ink-soft max-w-xs text-right leading-relaxed">
+              Schematics of how I design AI and platform systems — drawn, not screenshotted.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+            {architectures.map(({ no, title, caption, Diagram }) => (
+              <figure key={no} className="group">
+                <figcaption className="mb-4">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-accent text-sm">{no}</span>
+                    <h3 className="display-md font-display">{title}</h3>
+                  </div>
+                  <p className="mt-2 text-ink-soft text-[15px] leading-relaxed">{caption}</p>
+                </figcaption>
+                <div className="border border-line bg-paper-2/40 p-4">
+                  <Diagram />
+                </div>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------- Work ---------- */}
+        <section id="work" className="py-20 border-t border-line scroll-mt-16">
+          <span className="label">No.03 — Selected Work</span>
+          <h2 className="display-lg font-display mt-3 mb-12">Things I&apos;ve built</h2>
+
+          <div className="border-t border-line">
+            {projects.map((p) => {
+              const Inner = (
+                <div className="grid grid-cols-12 gap-4 py-7 items-baseline">
+                  <div className="col-span-12 md:col-span-1 font-mono text-accent text-sm">{p.no}</div>
+                  <div className="col-span-12 md:col-span-4">
+                    <h3 className="font-display text-xl flex items-center gap-1.5">
+                      {p.title}
+                      {p.link && (
+                        <ArrowUpRight className="w-4 h-4 text-ink-faint group-hover:text-accent transition-colors" />
+                      )}
+                    </h3>
+                    <div className="label mt-1.5">{p.org}</div>
+                  </div>
+                  <p className="col-span-12 md:col-span-5 text-ink-soft text-[15px] leading-relaxed">
+                    {p.desc}
+                  </p>
+                  <div className="col-span-12 md:col-span-2 flex flex-wrap gap-1.5 md:justify-end">
+                    {p.tags.map((t) => (
+                      <span key={t} className="font-mono text-[10px] text-ink-faint border border-line px-1.5 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+              return p.link ? (
+                <a
+                  key={p.no}
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-b border-line hover:bg-paper-2/50 transition-colors -mx-3 px-3"
+                >
+                  {Inner}
+                </a>
+              ) : (
+                <div key={p.no} className="group border-b border-line -mx-3 px-3">
+                  {Inner}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ---------- Path ---------- */}
+        <section id="path" className="py-20 border-t border-line scroll-mt-16">
+          <span className="label">No.04 — Professional Path</span>
+          <h2 className="display-lg font-display mt-3 mb-12">The road here</h2>
+
+          <div className="space-y-12">
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 md:col-span-3 label pt-1">2023 — Present · Remote</div>
+              <div className="col-span-12 md:col-span-9">
+                <h3 className="font-display text-2xl">
+                  Head of Infrastructure &amp; SRE — Agentic Operations
+                  <span className="text-accent"> · Deuna</span>
+                </h3>
+                <ul className="mt-4 space-y-2.5 text-ink-soft text-[15px] leading-relaxed">
+                  <li>Run the infra &amp; SRE operation through AI agents: incident triage, remediation, and FinOps via multi-agent orchestration + MCP.</li>
+                  <li>Built an agentic pipeline automating the delivery lifecycle (Jira → code-gen → tests → PR), cutting manual overhead ~40%.</li>
+                  <li>Multi-provider LLM integration (Claude, OpenAI, Gemini) with structured output, retries, and fallback; token/cost optimization.</li>
+                  <li>Extended SLO/SLI and Datadog observability to AI behavior, latency, and cost.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-12 md:col-span-3 label pt-1">2021 — 2025 · Remote</div>
+              <div className="col-span-12 md:col-span-9">
+                <h3 className="font-display text-2xl text-ink-soft">
+                  Senior DevOps / Platform Engineer · Housecall Pro
+                </h3>
+                <ul className="mt-4 space-y-2.5 text-ink-soft text-[15px] leading-relaxed">
+                  <li>Led enterprise platform transformation for a SaaS product serving millions of users.</li>
+                  <li>Architected multi-cloud solutions (AWS/Azure) with global RDS replication.</li>
+                  <li>Partnered with C-level leadership to reduce annual cloud spend by 20%.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- Skills ---------- */}
+        <section className="py-20 border-t border-line">
+          <span className="label">No.05 — Capabilities</span>
+          <h2 className="display-lg font-display mt-3 mb-12">What I bring</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+            {skills.map((s, i) => (
+              <div key={i} className="flex gap-5 border-t border-line pt-5">
+                <span className="font-mono text-accent text-sm">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="font-display text-xl">{s.title}</h3>
+                  <p className="mt-1.5 text-ink-soft text-[15px] leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------- Writing ---------- */}
+        <section className="py-20 border-t border-line">
+          <span className="label">No.06 — Writing</span>
+          <h2 className="display-lg font-display mt-3 mb-10">Technical insights</h2>
+          <a
+            href="https://medium.com/@andresmunozb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block border-y border-line py-8"
+          >
+            <div className="flex items-baseline justify-between gap-6">
+              <h3 className="font-display text-2xl md:text-3xl italic max-w-2xl">
+                The Productivity Paradox of AI
+              </h3>
+              <ArrowUpRight className="w-5 h-5 text-ink-faint group-hover:text-accent transition-colors shrink-0" />
+            </div>
+            <p className="mt-3 text-ink-soft max-w-2xl leading-relaxed">
+              Are we entering a productivity boom that elevates our capabilities,
+              or a bubble that erodes our engineering muscle memory?
+            </p>
+          </a>
+        </section>
+
+        {/* ---------- Contact ---------- */}
+        <section className="py-24 border-t border-line">
+          <span className="label">No.07 — Contact</span>
+          <h2 className="display-lg font-display mt-3 max-w-2xl">
+            Currently open to{" "}
+            <span className="italic text-accent">AI Engineer</span> &amp; LLM
+            Systems roles.
+          </h2>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="mailto:andreco87@gmail.com"
+              className="inline-flex items-center gap-2 bg-ink text-paper px-6 py-3 text-sm font-mono tracking-wide hover:bg-accent transition-colors"
+            >
+              andreco87@gmail.com
+            </a>
+            <a
+              href="https://www.linkedin.com/in/andres-munoz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-ink px-6 py-3 text-sm font-mono tracking-wide hover:bg-ink hover:text-paper transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/andresKillem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-ink px-6 py-3 text-sm font-mono tracking-wide hover:bg-ink hover:text-paper transition-colors"
+            >
+              GitHub
             </a>
           </div>
-          <p className="text-sm text-gray-500">© 2025 Andrés Muñoz</p>
+        </section>
+      </main>
+
+      {/* ---------- Footer ---------- */}
+      <footer className="border-t border-line">
+        <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-4">
+          <p className="label">© 2026 Andrés Muñoz · Quito → EST</p>
+          <p className="label">Architecting elegance in chaos.</p>
         </div>
       </footer>
+
+      <AIChatbot />
     </div>
   );
 }

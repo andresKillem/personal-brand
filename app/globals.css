@@ -1,53 +1,86 @@
-/* Import system fonts for a clean look */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+/* ============================================================
+   Editorial Light — andresmunoz.tech
+   Paper #F5F1E8 · Ink #14110F · Accent oxblood #9E3B2E
+   Display: Fraunces · Body: Newsreader · Mono: JetBrains Mono
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @import "tailwindcss";
 
+@theme {
+  --color-paper: #F5F1E8;
+  --color-paper-2: #EFE9DC;
+  --color-ink: #14110F;
+  --color-ink-soft: #5B544B;
+  --color-ink-faint: #8C8478;
+  --color-line: rgba(20, 17, 15, 0.14);
+  --color-accent: #9E3B2E;
+  --color-accent-soft: rgba(158, 59, 46, 0.10);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --paper: #F5F1E8;
+  --ink: #14110F;
+  --accent: #9E3B2E;
+}
+
 html {
   scroll-behavior: smooth;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background-color: var(--color-paper);
+  /* faint paper grain */
+  background-image: radial-gradient(rgba(20, 17, 15, 0.02) 1px, transparent 1px);
+  background-size: 4px 4px;
 }
 
 body {
-  background-color: white;
-  color: #111827;
-  line-height: 1.6;
+  background-color: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Serif font for headings */
-h1, h2, h3 {
-  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+/* ---- Proportionate typographic scale (modular ~1.22) ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+  text-wrap: balance;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.display-xl { font-size: clamp(2.6rem, 6.2vw, 5rem); line-height: 0.98; }
+.display-lg { font-size: clamp(2rem, 4vw, 3rem); }
+.display-md { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+
+/* Editorial small-caps mono label */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
 }
 
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
+.rule { height: 1px; background: var(--color-line); width: 100%; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
+::selection { background: var(--color-accent); color: var(--color-paper); }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+/* ---- Motion ---- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-paper); }
+::-webkit-scrollbar-thumb { background: rgba(20,17,15,0.18); }
+::-webkit-scrollbar-thumb:hover { background: rgba(20,17,15,0.32); }
