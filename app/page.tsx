@@ -152,10 +152,10 @@ export default function Home() {
               <h2 className="text-3xl font-serif font-bold text-gray-900 mb-12">Systemic Strategy</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { title: "Cloud & Platform", desc: "AWS Control Tower, Multi-Subscription Azure, Kubernetes at scale.", icon: "☁️" },
-                  { title: "DevOps & CI/CD", desc: "Terraform, GitOps (ArgoCD), GitHub Actions, Infrastructure as Code.", icon: "🚀" },
-                  { title: "Zero-Trust Security", desc: "IAM Hardening, FinTech Compliance, Network Isolation.", icon: "🔒" },
-                  { title: "Observability", desc: "Datadog, Prometheus, Distributed Tracing, SRE Practices.", icon: "📊" }
+                  { title: "Agentic AI & Orchestration", desc: "Multi-agent (supervisor + specialist), tool/function calling, MCP servers, classifier routing.", icon: "🤖" },
+                  { title: "RAG & Retrieval", desc: "Embeddings, vector search (Qdrant), reranking (Cohere), knowledge graphs (Neo4j), grounding.", icon: "🔎" },
+                  { title: "LLM Evals & Observability", desc: "Golden datasets, prompt-regression, hallucination/safety checks, Langfuse + Datadog tracing.", icon: "📊" },
+                  { title: "Cloud & Platform Foundation", desc: "AWS, Kubernetes, Terraform, GitOps, SRE — the base under the AI.", icon: "☁️" }
                 ].map((skill, i) => (
                   <div key={i} className="bg-gray-50 p-6 rounded-3xl border border-gray-100 flex gap-4 hover:border-blue-200 transition-colors">
                     <div className="text-2xl">{skill.icon}</div>
