@@ -5,17 +5,19 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Andrés Muñoz | Principal Solutions Architect & AI Expert",
-  description: "Architecting high-scale cloud platforms, FinTech ecosystems (PilasFi, Deuna), and AI-driven solutions. 10+ years of technical leadership in AWS, Kubernetes, and DevOps.",
+  title: "Andrés Muñoz | AI Engineer & LLM Systems — Agentic Operations",
+  description: "AI Engineer building production agent systems — multi-provider routing, RAG, and evals — on a deep Cloud/Platform & SRE foundation. Head of Infrastructure & SRE running operations with AI agents.",
   keywords: [
     "Andrés Muñoz",
-    "PilasFi",
-    "Solutions Architect",
-    "DevOps Architect",
-    "Cloud Expert",
-    "FinTech Infrastructure",
-    "AWS Professional",
-    "Kubernetes at Scale"
+    "AI Engineer",
+    "LLM Systems",
+    "Agentic AI",
+    "RAG",
+    "LLM Evals",
+    "Multi-Agent Orchestration",
+    "Head of Infrastructure SRE",
+    "FastAPI",
+    "AWS"
   ],
   authors: [{ name: "Andrés Muñoz" }],
   creator: "Andrés Muñoz",
@@ -28,14 +30,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://andresmunoz.tech",
-    title: "Andrés Muñoz - Principal DevOps Architect & SRE",
-    description: "10+ years architecting cloud-native platforms for high-growth companies. Specialized in AWS multi-account architectures, Kubernetes at scale, DevOps transformation, and SRE practices.",
+    title: "Andrés Muñoz — AI Engineer & LLM Systems",
+    description: "Production agent systems — multi-provider routing, RAG, evals — on a deep Cloud/Platform & SRE foundation. Head of Infrastructure & SRE running ops with AI agents.",
     siteName: "Andrés Muñoz Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andrés Muñoz - Principal DevOps Architect & SRE",
-    description: "10+ years architecting cloud-native platforms for high-growth companies. Expert in DevOps, SRE, and Cloud Architecture.",
+    title: "Andrés Muñoz — AI Engineer & LLM Systems",
+    description: "Production agent systems — multi-provider routing, RAG, and evals — on a deep Cloud/Platform & SRE foundation.",
   },
   alternates: {
     canonical: "https://andresmunoz.tech",
@@ -51,13 +53,13 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Andrés Muñoz",
-    "jobTitle": "Principal Solutions Architect",
+    "jobTitle": "AI Engineer & Head of Infrastructure / SRE",
     "url": "https://andresmunoz.tech",
     "sameAs": [
       "https://www.linkedin.com/in/andres-munoz/",
       "https://github.com/andresKillem"
     ],
-    "description": "Expert Solutions Architect and DevOps leader specializing in Cloud Architecture and FinTech."
+    "description": "AI Engineer building production LLM agent systems (multi-provider routing, RAG, evals) on a deep Cloud/Platform and SRE foundation."
   };
 
   return (
