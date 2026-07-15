@@ -1,69 +1,79 @@
 /* ============================================================
-   Editorial Light — andresmunoz.tech
-   Paper #F5F1E8 · Ink #14110F · Accent oxblood #9E3B2E
-   Display: Fraunces · Body: Newsreader · Mono: JetBrains Mono
+   Field Atlas — andresmunoz.tech
+   A night survey map: the career as an ascent, Quito → EST.
+   Ground #0B100F · Bone #ECE7D8 · Flare #FF6B3D · Glacier #8FD3C1
+   Display: Instrument Serif · Body: Familjen Grotesk · Mono: IBM Plex Mono
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #F5F1E8;
-  --color-paper-2: #EFE9DC;
-  --color-ink: #14110F;
-  --color-ink-soft: #5B544B;
-  --color-ink-faint: #8C8478;
-  --color-line: rgba(20, 17, 15, 0.14);
-  --color-accent: #9E3B2E;
-  --color-accent-soft: rgba(158, 59, 46, 0.10);
+  --color-paper: #0B100F;
+  --color-paper-2: #111816;
+  --color-paper-3: #18211E;
+  --color-ink: #ECE7D8;
+  --color-ink-soft: #A9B0A6;
+  --color-ink-faint: #7D8880;
+  --color-line: rgba(236, 231, 216, 0.13);
+  --color-line-strong: rgba(236, 231, 216, 0.28);
+  --color-accent: #FF6B3D;
+  --color-accent-soft: rgba(255, 107, 61, 0.12);
+  --color-glacier: #8FD3C1;
+  --color-contour: #22312C;
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Newsreader", Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-}
-
-:root {
-  --paper: #F5F1E8;
-  --ink: #14110F;
-  --accent: #9E3B2E;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
 }
 
 html {
   scroll-behavior: smooth;
   background-color: var(--color-paper);
-  /* faint paper grain */
-  background-image: radial-gradient(rgba(20, 17, 15, 0.02) 1px, transparent 1px);
-  background-size: 4px 4px;
+  color-scheme: dark;
 }
 
 body {
-  background-color: transparent;
+  background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body);
-  font-optical-sizing: auto;
-  line-height: 1.55;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ---- Proportionate typographic scale (modular ~1.22) ---- */
+/* Film grain over everything — keeps the dark ground from feeling flat */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@layer components {
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.018em;
-  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
-.display-xl { font-size: clamp(2.6rem, 6.2vw, 5rem); line-height: 0.98; }
-.display-lg { font-size: clamp(2rem, 4vw, 3rem); }
-.display-md { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.display-xl { font-size: clamp(3rem, 9.2vw, 8.25rem); line-height: 0.92; letter-spacing: -0.025em; }
+.display-lg { font-size: clamp(2.25rem, 5vw, 4rem); }
+.display-md { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.1; }
 
-/* Editorial small-caps mono label */
+/* Map-margin label: spaced mono caps, as printed on a survey sheet */
 .label {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.22em;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-ink-faint);
 }
@@ -72,15 +82,75 @@ h1, h2, h3, h4 {
 
 ::selection { background: var(--color-accent); color: var(--color-paper); }
 
+:focus-visible {
+  outline: 1.5px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---- Survey frame: corner registration ticks on a panel ---- */
+.frame {
+  position: relative;
+  border: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-paper-2) 70%, transparent);
+}
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-color: var(--color-accent);
+  border-style: solid;
+  pointer-events: none;
+}
+.frame::before { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+.frame::after { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:hover { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-paper); }
+.btn-solid { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-paper); }
+.btn-solid:hover { background: var(--color-ink); border-color: var(--color-ink); }
+
+}
+
 /* ---- Motion ---- */
 @keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.rise { animation: rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) both; }
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.2s; }
+.rise-3 { animation-delay: 0.34s; }
+.rise-4 { animation-delay: 0.48s; }
+.rise-5 { animation-delay: 0.62s; }
+
+@keyframes beacon {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+.beacon { animation: beacon 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; transform-origin: center; transform-box: fill-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .beacon { animation: none; }
+}
 
 /* ---- Scrollbar ---- */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-paper); }
-::-webkit-scrollbar-thumb { background: rgba(20,17,15,0.18); }
-::-webkit-scrollbar-thumb:hover { background: rgba(20,17,15,0.32); }
+::-webkit-scrollbar-thumb { background: rgba(236, 231, 216, 0.16); }
+::-webkit-scrollbar-thumb:hover { background: rgba(236, 231, 216, 0.3); }
