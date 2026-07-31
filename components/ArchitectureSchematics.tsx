@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 /* ============================================================
    Architecture Schematics — hand-built editorial line diagrams.
-   One visual language: hairline ink strokes, mono labels, a
-   single oxblood accent per diagram. No client screenshots.
+   One visual language: hairline bone strokes, mono labels, a
+   single flare accent per diagram. No client screenshots.
    ============================================================ */
 
-const INK = "#14110F";
-const FAINT = "#8C8478";
-const ACCENT = "#9E3B2E";
-const LINE = "rgba(20,17,15,0.55)";
+const INK = "#ECE7D8";
+const FAINT = "#7D8880";
+const ACCENT = "#FF6B3D";
+const LINE = "rgba(236,231,216,0.5)";
 
 type NodeProps = {
   x: number; y: number; w?: number; h?: number;
@@ -28,14 +28,14 @@ function Node({ x, y, w = 120, h = 46, title, sub, accent, delay = 0 }: NodeProp
     >
       <rect
         x={x} y={y} width={w} height={h}
-        fill={accent ? "rgba(158,59,46,0.07)" : "rgba(20,17,15,0.015)"}
+        fill={accent ? "rgba(255,107,61,0.1)" : "rgba(236,231,216,0.035)"}
         stroke={accent ? ACCENT : INK}
         strokeWidth={1.1}
       />
       <text
         x={x + w / 2} y={sub ? y + h / 2 - 3 : y + h / 2 + 4}
         textAnchor="middle"
-        fontFamily="'Fraunces', serif" fontSize="14" fontWeight={500}
+        fontFamily="'Instrument Serif', serif" fontSize="16"
         fill={accent ? ACCENT : INK}
       >
         {title}
@@ -44,7 +44,7 @@ function Node({ x, y, w = 120, h = 46, title, sub, accent, delay = 0 }: NodeProp
         <text
           x={x + w / 2} y={y + h / 2 + 13}
           textAnchor="middle"
-          fontFamily="'JetBrains Mono', monospace" fontSize="8.5"
+          fontFamily="'IBM Plex Mono', monospace" fontSize="8.5"
           letterSpacing="0.06em" fill={FAINT}
         >
           {sub}
@@ -103,8 +103,8 @@ export function AgenticSREDiagram() {
       <Node x={432} y={128} w={146} title="Remediation" sub="runbooks · MCP" delay={0.6} />
       <Node x={432} y={220} w={146} title="FinOps agent" sub="cost · rightsizing" delay={0.65} />
 
-      <line x1="20" y1="284" x2="620" y2="284" stroke="rgba(20,17,15,0.14)" />
-      <text x="20" y="278" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
+      <line x1="20" y1="284" x2="620" y2="284" stroke="rgba(236,231,216,0.13)" />
+      <text x="20" y="278" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
         MULTI-AGENT ORCHESTRATION · MCP TOOLS · HUMAN-IN-THE-LOOP
       </text>
     </svg>
@@ -130,9 +130,9 @@ export function GatewayDiagram() {
       <Node x={536} y={133} w={92} h={36} title="GPT" sub="fallback" delay={0.65} />
       <Node x={536} y={232} w={92} h={36} title="Gemini" sub="fallback" delay={0.7} />
 
-      <text x="582" y="92" textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="8" fill={FAINT}>↓ fallback</text>
-      <line x1="20" y1="284" x2="628" y2="284" stroke="rgba(20,17,15,0.14)" />
-      <text x="20" y="278" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
+      <text x="582" y="92" textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill={FAINT}>↓ fallback</text>
+      <line x1="20" y1="284" x2="628" y2="284" stroke="rgba(236,231,216,0.13)" />
+      <text x="20" y="278" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
         ROUTING · FALLBACK · QUALITY × LATENCY × COST
       </text>
     </svg>
@@ -161,8 +161,8 @@ export function RAGDiagram() {
       <Pipe d="M 468 244 C 510 244 510 164 540 164" delay={0.6} />
       <Node x={540} y={126} w={92} h={52} title="Rerank" sub="Cohere" accent delay={0.7} />
 
-      <line x1="20" y1="284" x2="632" y2="284" stroke="rgba(20,17,15,0.14)" />
-      <text x="20" y="278" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
+      <line x1="20" y1="284" x2="632" y2="284" stroke="rgba(236,231,216,0.13)" />
+      <text x="20" y="278" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
         HYBRID RETRIEVAL · RERANK · GROUNDED + CITED ANSWER
       </text>
     </svg>
@@ -186,10 +186,10 @@ export function PaymentsDiagram() {
       <Node x={544} y={220} w={84} h={38} title="Recon" sub="real-time" delay={0.65} />
 
       <rect x="172" y="110" width="320" height="82" fill="none" stroke={ACCENT} strokeWidth="0.8" strokeDasharray="2 4" />
-      <text x="178" y="106" fontFamily="'JetBrains Mono', monospace" fontSize="8" letterSpacing="0.12em" fill={ACCENT}>PCI-DSS BOUNDARY</text>
+      <text x="178" y="106" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="0.12em" fill={ACCENT}>PCI-DSS BOUNDARY</text>
 
-      <line x1="20" y1="284" x2="628" y2="284" stroke="rgba(20,17,15,0.14)" />
-      <text x="20" y="278" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
+      <line x1="20" y1="284" x2="628" y2="284" stroke="rgba(236,231,216,0.13)" />
+      <text x="20" y="278" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.18em" fill={FAINT}>
         EVENT-DRIVEN · 1.5K+ TPS · 99.95% SUCCESS
       </text>
     </svg>
@@ -216,14 +216,14 @@ export function LangGraphDiagram() {
 
       {/* cycle back to supervisor (LangGraph's signature) */}
       <Pipe d="M 456 138 C 396 104 360 100 332 120" delay={0.82} dashed accent />
-      <text x={372} y={96} fontFamily="'JetBrains Mono', monospace" fontSize="8" fill={ACCENT}>↩ loop until done</text>
+      <text x={372} y={96} fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill={ACCENT}>↩ loop until done</text>
 
       {/* terminal */}
       <Node x={206} y={236} w={58} h={28} title="END" delay={0.7} />
       <Pipe d="M 234 182 V 236" delay={0.74} dashed />
 
-      <line x1="18" y1="288" x2="620" y2="288" stroke="rgba(20,17,15,0.14)" />
-      <text x="18" y="282" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
+      <line x1="18" y1="288" x2="620" y2="288" stroke="rgba(236,231,216,0.13)" />
+      <text x="18" y="282" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
         STATEGRAPH · CONDITIONAL EDGES · CYCLES · SHARED STATE
       </text>
     </svg>
@@ -233,7 +233,7 @@ export function LangGraphDiagram() {
 /* ---------- 6 · LangChain LCEL pipeline ---------- */
 export function LangChainDiagram() {
   const pipe = (x: number) => (
-    <text x={x} y={120} textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="22" fill={ACCENT}>|</text>
+    <text x={x} y={120} textAnchor="middle" fontFamily="'IBM Plex Mono', monospace" fontSize="22" fill={ACCENT}>|</text>
   );
   return (
     <svg viewBox="0 0 680 230" {...svgProps} role="img" aria-label="LangChain LCEL pipeline diagram">
@@ -254,8 +254,8 @@ export function LangChainDiagram() {
       <Pipe d="M 526 119 H 568" delay={0.54} />
       <Node x={568} y={96} w={96} h={46} title="Answer" delay={0.58} />
 
-      <line x1="16" y1="214" x2="664" y2="214" stroke="rgba(20,17,15,0.14)" />
-      <text x="16" y="208" fontFamily="'JetBrains Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
+      <line x1="16" y1="214" x2="664" y2="214" stroke="rgba(236,231,216,0.13)" />
+      <text x="16" y="208" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" letterSpacing="0.16em" fill={FAINT}>
         LCEL · prompt | model | parser · RETRIEVAL-AUGMENTED
       </text>
     </svg>
