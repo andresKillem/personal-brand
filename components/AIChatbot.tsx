@@ -55,7 +55,8 @@ export const AIChatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-gray-900 text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform"
+        aria-label="Open the assistant"
+        className="fixed bottom-6 right-6 z-50 bg-paper-2 text-accent border border-line-strong p-3 flex items-center justify-center hover:bg-accent hover:text-paper hover:border-accent transition-colors"
       >
         <Sparkles className="w-5 h-5" />
       </button>
@@ -66,33 +67,34 @@ export const AIChatbot = () => {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-20 right-6 z-50 w-80 h-[450px] bg-white border border-gray-200 rounded-lg shadow-2xl flex flex-col"
+            className="frame fixed bottom-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] max-w-80 h-[450px] !bg-paper-2 shadow-2xl shadow-black/60 flex flex-col"
           >
-            <div className="bg-gray-50 p-3 flex items-center justify-between border-b border-gray-200">
-              <span className="text-sm font-semibold flex items-center gap-2 text-gray-800"><Bot className="w-4 h-4" /> AI Assistant</span>
-              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-gray-600"><X className="w-4 h-4" /></button>
+            <div className="p-3 flex items-center justify-between border-b border-line">
+              <span className="label flex items-center gap-2 text-ink"><Bot className="w-4 h-4" /> AI Assistant</span>
+              <button onClick={() => setIsOpen(false)} aria-label="Close the assistant" className="text-ink-faint hover:text-ink"><X className="w-4 h-4" /></button>
             </div>
 
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-2.5 rounded-lg ${msg.role === "bot" ? "bg-gray-100 text-gray-800" : "bg-blue-600 text-white"}`}>
+                  <div className={`max-w-[85%] p-2.5 ${msg.role === "bot" ? "bg-paper-3 text-ink" : "bg-accent text-paper"}`}>
                     {msg.text}
                   </div>
                 </div>
               ))}
-              {isTyping && <div className="text-gray-400 text-xs italic">AI is typing...</div>}
+              {isTyping && <div className="label">AI is typing...</div>}
             </div>
 
-            <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="p-3 border-t border-gray-200 flex gap-2">
+            <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="p-3 border-t border-line flex gap-2">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-gray-50 border border-gray-200 text-sm rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                aria-label="Your question"
+                className="flex-1 bg-paper border border-line text-ink placeholder:text-ink-faint text-sm px-3 py-1.5 focus:outline-none focus:border-accent"
               />
-              <button type="submit" className="bg-blue-600 text-white p-1.5 rounded-md hover:bg-blue-700"><Send className="w-4 h-4" /></button>
+              <button type="submit" aria-label="Send" className="bg-accent text-paper p-1.5 hover:bg-ink transition-colors"><Send className="w-4 h-4" /></button>
             </form>
           </motion.div>
         )}
