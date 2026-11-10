@@ -15,13 +15,8 @@ export const Contact = () => {
     e.preventDefault();
     setStatus("sending");
 
-    // Create mailto link as fallback
-    const subject = `Job Opportunity from ${formData.company || formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ACompany: ${formData.company}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    const mailtoLink = `mailto:andreco87@hotmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-    // Open mailto link
-    window.location.href = mailtoLink;
+    // No email address is published on the site; contact goes through LinkedIn
+    window.open("https://www.linkedin.com/in/andres-munoz", "_blank", "noopener,noreferrer");
 
     setStatus("sent");
     setTimeout(() => {
@@ -57,9 +52,9 @@ export const Contact = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-lg mb-2">Email</h3>
-              <a href="mailto:andreco87@hotmail.com" className="text-blue-100 hover:text-white transition-colors">
-                andreco87@hotmail.com
+              <h3 className="font-semibold text-lg mb-2">Message</h3>
+              <a href="https://www.linkedin.com/in/andres-munoz" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors">
+                Via LinkedIn
               </a>
             </div>
 
@@ -69,9 +64,9 @@ export const Contact = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-lg mb-2">Phone</h3>
-              <a href="tel:+12039181392" className="text-blue-100 hover:text-white transition-colors">
-                (203) 918-1392
+              <h3 className="font-semibold text-lg mb-2">LinkedIn</h3>
+              <a href="https://www.linkedin.com/in/andres-munoz" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors">
+                in/andres-munoz
               </a>
             </div>
 
@@ -168,10 +163,12 @@ export const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:andreco87@hotmail.com"
+                href="https://www.linkedin.com/in/andres-munoz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 px-8 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Send Email
+                Send a Message
               </a>
               <a
                 href="https://www.linkedin.com/in/andres-munoz"

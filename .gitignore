@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .superpowers/
+
+# CV PDFs contain personal contact details; keep them out of the public repo and deploy
+/public/cv/*.pdf

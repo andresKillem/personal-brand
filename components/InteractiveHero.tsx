@@ -76,7 +76,7 @@ export const InteractiveHero = () => {
         }, 500);
         break;
       case "contact":
-        output = "📧 Email: andreco87@hotmail.com\n📱 Phone: (203) 918-1392\n💼 LinkedIn: linkedin.com/in/andres-munoz\n📍 Location: Stamford, CT (Remote available)";
+        output = "💼 LinkedIn: linkedin.com/in/andres-munoz\n📍 Location: Stamford, CT (Remote available)";
         break;
       case "clear":
         setTerminalHistory([]);

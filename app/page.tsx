@@ -348,11 +348,8 @@ export default function Home() {
             }
           />
           <div className="flex flex-wrap gap-3">
-            <a href="mailto:andreco87@gmail.com" className="btn btn-solid normal-case tracking-[0.04em]">
-              andreco87@gmail.com
-            </a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn">
-              LinkedIn
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
+              Message me on LinkedIn
             </a>
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn">
               GitHub

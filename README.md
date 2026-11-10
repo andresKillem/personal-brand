@@ -105,7 +105,5 @@ To customize the content:
 
 ## Contact
 
-- **Email**: andreco87@hotmail.com
-- **Phone**: (203) 918-1392
 - **LinkedIn**: [linkedin.com/in/andres-munoz](https://www.linkedin.com/in/andres-munoz)
 - **Location**: Stamford, CT, USA

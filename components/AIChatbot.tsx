@@ -41,7 +41,7 @@ export const AIChatbot = () => {
       } else if (lowerMsg.includes("project") || lowerMsg.includes("pilasfi")) {
         response = "He developed PilasFi.com (a FinTech platform), Deuna's payment systems, and AI platforms at Housecall Pro.";
       } else if (lowerMsg.includes("contact") || lowerMsg.includes("email") || lowerMsg.includes("hire")) {
-        response = "Contact him at andreco87@hotmail.com or via LinkedIn (linkedin.com/in/andres-munoz).";
+        response = "The best way to reach him is LinkedIn: linkedin.com/in/andres-munoz.";
       } else {
         response = "Andrés specializes in Cloud Architecture (AWS Pro Architect), DevOps, and SRE. Check his 'Selected Projects' for details!";
       }
