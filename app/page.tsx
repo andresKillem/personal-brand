@@ -100,14 +100,22 @@ export default function Home() {
           <nav className="flex items-center gap-4 sm:gap-7 label">
             <a href="#systems" className="hidden sm:inline hover:text-ink transition-colors">Systems</a>
             <a href="#work" className="hidden sm:inline hover:text-ink transition-colors">Work</a>
-            <a href="#route" className="hover:text-ink transition-colors">Route</a>
+            <a href="#route" className="hidden sm:inline hover:text-ink transition-colors">Route</a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-ink transition-colors"
+            >
+              GitHub
+            </a>
             <a
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:text-ink transition-colors"
             >
-              Connect
+              LinkedIn
             </a>
           </nav>
           <Altimeter />
@@ -123,7 +131,7 @@ export default function Home() {
         {/* Darkens the terrain behind the title block so the text stays readable */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_18%_30%,var(--color-paper)_20%,transparent_100%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_52%_80%_at_20%_45%,var(--color-paper)_25%,transparent_100%)]"
         />
 
         <RouteMap className="hidden lg:block absolute inset-0" />
@@ -137,40 +145,35 @@ export default function Home() {
             <span className="label hidden sm:inline">0°13′S 78°31′W → 41°03′N 73°32′W</span>
           </div>
 
-          {/* Title block */}
-          <div className="mt-12 lg:mt-16 max-w-xl pointer-events-auto">
-            <h1 className="font-body font-bold uppercase leading-[0.9] tracking-[-0.035em] text-[clamp(2.75rem,6.4vw,5.25rem)] rise rise-1">
-              Andrés
-              <br />
-              Muñoz
+          {/* The opening post */}
+          <article className="mt-12 lg:mt-16 max-w-[34rem] lg:max-w-[46%] pointer-events-auto">
+            <p className="label rise rise-1">Updated November 2026 · Stamford, CT</p>
+            <h1 className="mt-4 font-display text-[clamp(1.9rem,3.2vw,2.5rem)] leading-[1.12] [text-wrap:pretty] rise rise-1">
+              Hola, I’m Andrés. I build agent systems, and the platforms that keep them standing.
             </h1>
-            <p className="mt-6 font-display text-3xl leading-tight rise rise-2">
-              {currentCamp.title}
-              <span className="italic text-accent"> at {currentCamp.company}</span>
-            </p>
-            <p className="mt-6 text-ink-soft border-l border-accent pl-5 rise rise-3">
-              I build agent systems that hold up in production: multi-agent
-              orchestration, multi-provider routing, hybrid retrieval, and evals
-              that make quality a <span className="text-ink italic">number</span>,
-              not a feeling. All on a platform/SRE foundation hardened in fintech
-              at 1,500+ TPS.
-            </p>
-
-            {/* Scale bar */}
-            <div className="mt-9 rise rise-4" aria-hidden="true">
-              <div className="flex h-1.5 w-64 border border-ink-faint">
-                <span className="flex-1 bg-ink-faint" />
-                <span className="flex-1" />
-                <span className="flex-1 bg-ink-faint" />
-              </div>
-              <div className="flex w-64 justify-between label mt-2">
-                <span>2011</span>
-                <span>2016</span>
-                <span>2021</span>
-                <span>2026</span>
-              </div>
+            <div className="prose-post mt-7 space-y-5 text-ink-soft rise rise-2">
+              <p>
+                I’m a {currentCamp.title} at <a href="#route">{currentCamp.company}</a>. Before
+                that I ran infrastructure and SRE at Deuna, where much of the operation
+                (incident triage, remediation, FinOps) was handled by AI agents, and spent
+                years on payments and platform work at Housecall Pro and Kushki.
+              </p>
+              <p>
+                Most of what I do is make LLM systems boring, in the good sense: multi-agent
+                orchestration, routing across providers with fallbacks, retrieval that cites
+                its sources, and evals that turn quality into a number instead of a feeling.
+                Under all of it sits a platform foundation hardened in fintech at 1,500+ TPS.
+              </p>
+              <p>
+                This site is a map of that work: <a href="#systems">the systems I design</a>,{" "}
+                <a href="#work">things I’ve built</a>, and <a href="#route">the route that got me here</a>.
+                The code lives on{" "}
+                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>; for
+                everything else, find me on{" "}
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+              </p>
             </div>
-          </div>
+          </article>
         </div>
 
         {/* On small screens the route sits below the title block */}

@@ -106,6 +106,17 @@ h1, h2, h3, h4 {
 .frame::before { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
 .frame::after { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
 
+/* ---- Inline links inside the opening post ---- */
+.prose-post a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+.prose-post a:hover { color: var(--color-accent); }
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;
@@ -144,12 +155,8 @@ h1, h2, h3, h4 {
 }
 .beacon { animation: beacon 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; transform-origin: center; transform-box: fill-box; }
 
-/* Hero route: the line draws itself, then the camps appear along it */
-@keyframes route-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-.route-line {
-  stroke-dasharray: 1;
-  animation: route-draw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
-}
+/* Hero route: the trail fades in, then the camps appear along it */
+.route-line { animation: camp-in 1.2s ease-out 0.3s both; }
 @keyframes camp-in { from { opacity: 0; } to { opacity: 1; } }
 .route-camp { animation: camp-in 0.5s ease-out both; }
 

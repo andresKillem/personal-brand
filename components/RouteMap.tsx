@@ -2,8 +2,8 @@ import { camps } from "@/lib/content";
 
 /* ============================================================
    RouteMap — the career plotted on the hero's terrain.
-   Each camp is a marker on the map; the route climbs from the
-   valley (lower left) to the current position (upper right).
+   Each camp is a marker on the map; the route switchbacks up the
+   right side of the hero, from the valley to the current position.
    Positions are percentages of the map area.
    ============================================================ */
 
@@ -11,32 +11,21 @@ type MapPosition = { x: number; y: number; labelSide: "right" | "left" };
 
 /** One position per camp, in the same order as `camps`. */
 const CAMP_POSITIONS: MapPosition[] = [
-  { x: 13, y: 86, labelSide: "right" },
-  { x: 30, y: 82, labelSide: "right" },
-  { x: 43, y: 72, labelSide: "right" },
-  { x: 55, y: 68, labelSide: "right" },
-  { x: 63, y: 55, labelSide: "right" },
-  { x: 72, y: 47, labelSide: "right" },
-  { x: 81, y: 33, labelSide: "right" },
-  { x: 90, y: 17, labelSide: "left" },
+  { x: 64, y: 90, labelSide: "right" },
+  { x: 74, y: 82, labelSide: "right" },
+  { x: 68, y: 70, labelSide: "left" },
+  { x: 79, y: 63, labelSide: "right" },
+  { x: 71, y: 51, labelSide: "left" },
+  { x: 83, y: 43, labelSide: "right" },
+  { x: 75, y: 31, labelSide: "left" },
+  { x: 87, y: 19, labelSide: "right" },
 ];
 
-const TRAILHEAD = { x: 4, y: 93 };
+const TRAILHEAD = { x: 55, y: 97 };
 
+/** A switchback trail: straight legs between camps, like a path drawn on a survey map. */
 function routePath(points: { x: number; y: number }[]): string {
-  let path = `M ${points[0].x} ${points[0].y}`;
-  for (let i = 0; i < points.length - 1; i++) {
-    const previous = points[Math.max(0, i - 1)];
-    const start = points[i];
-    const end = points[i + 1];
-    const next = points[Math.min(points.length - 1, i + 2)];
-    const tension = 0.2;
-    path +=
-      ` C ${start.x + (end.x - previous.x) * tension} ${start.y + (end.y - previous.y) * tension},` +
-      ` ${end.x - (next.x - start.x) * tension} ${end.y - (next.y - start.y) * tension},` +
-      ` ${end.x} ${end.y}`;
-  }
-  return path;
+  return points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
 }
 
 export function RouteMap({ className = "" }: { className?: string }) {
@@ -56,11 +45,11 @@ export function RouteMap({ className = "" }: { className?: string }) {
       >
         <path
           d={path}
-          pathLength={1}
           fill="none"
           stroke="var(--color-accent)"
           strokeWidth="1.5"
-          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray="7 6"
           vectorEffect="non-scaling-stroke"
           className="route-line"
         />
@@ -94,7 +83,7 @@ export function RouteMap({ className = "" }: { className?: string }) {
               </span>
               <span
                 className={`absolute whitespace-nowrap ${
-                  position.labelSide === "right" ? "top-2 left-3" : "bottom-1 right-5 text-right"
+                  position.labelSide === "right" ? "top-2 left-3" : "top-2 right-5 text-right"
                 }`}
               >
                 <span
