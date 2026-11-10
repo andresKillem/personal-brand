@@ -202,6 +202,15 @@ export const talks: Talk[] = [
     photo: { src: "/talks/espe-2024.jpg", alt: "Group photo with students and faculty outside Bloque D at ESPE" },
   },
   {
+    university: "Universidad Politécnica Estatal del Carchi",
+    shortName: "UPEC",
+    city: "Tulcán",
+    date: "24 Oct 2024",
+    title: "Guest talk on campus",
+    context: "A packed hall for Deuna’s session with students",
+    photo: { src: "/talks/upec-2024.jpg", alt: "A full hall of students during the Deuna session at UPEC" },
+  },
+  {
     university: "Universidad de Las Américas",
     shortName: "UDLA",
     city: "Quito",
@@ -209,14 +218,6 @@ export const talks: Talk[] = [
     title: "¿Por qué la resiliencia es clave en las arquitecturas modernas?",
     context: "Part of “Desafíos de la Tecnología en una Fintech”, Deuna’s session at UDLA",
     photo: { src: "/talks/udla-2024.jpg", alt: "Andrés speaking on stage at UDLA, beside a slide on resilience in modern architectures" },
-  },
-  {
-    university: "Universidad Politécnica Estatal del Carchi",
-    shortName: "UPEC",
-    city: "Tulcán",
-    date: "",
-    title: "Guest talk on campus",
-    context: "",
   },
 ];
 
