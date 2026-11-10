@@ -11,7 +11,8 @@ import {
   LangChainDiagram,
   PaymentsDiagram,
 } from "@/components/ArchitectureSchematics";
-import { capabilities, currentCamp, projects, surveyData } from "@/lib/content";
+import { CompanyMark } from "@/components/CompanyMark";
+import { capabilities, currentCamp, projects, surveyData, talks } from "@/lib/content";
 import { ArrowUpRight } from "lucide-react";
 
 const architectures = [
@@ -98,9 +99,10 @@ export default function Home() {
             Andrés Muñoz
           </a>
           <nav className="flex items-center gap-4 sm:gap-7 label">
-            <a href="#systems" className="hidden sm:inline hover:text-ink transition-colors">Systems</a>
-            <a href="#work" className="hidden sm:inline hover:text-ink transition-colors">Work</a>
-            <a href="#route" className="hidden sm:inline hover:text-ink transition-colors">Route</a>
+            <a href="#systems" className="hidden md:inline hover:text-ink transition-colors">Systems</a>
+            <a href="#work" className="hidden md:inline hover:text-ink transition-colors">Work</a>
+            <a href="#route" className="hidden md:inline hover:text-ink transition-colors">Route</a>
+            <a href="#talks" className="hidden md:inline hover:text-ink transition-colors">Talks</a>
             <a
               href={GITHUB_URL}
               target="_blank"
@@ -199,14 +201,14 @@ export default function Home() {
         <section className="py-10">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <span className="label shrink-0">Surveyed for</span>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 font-display text-2xl text-ink-soft">
-              <span>Accordion</span>
-              <span>Deuna</span>
-              <span>Housecall Pro</span>
-              <span>Kushki</span>
-              <span>Banco Pichincha</span>
-              <span>Telefónica</span>
-            </div>
+            <ul className="flex flex-wrap items-center gap-x-9 gap-y-4 font-display text-2xl text-ink-soft">
+              {["Accordion", "Deuna", "Housecall Pro", "Kushki", "Banco Pichincha", "Telefónica"].map((company) => (
+                <li key={company} className="flex items-center gap-3">
+                  <CompanyMark company={company} />
+                  {company}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -221,7 +223,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-16">
             {architectures.map(({ no, title, caption, Diagram }) => (
               <figure key={no}>
-                <div className="frame p-4">
+                <div className="frame p-4 !bg-[#070B0A]">
                   <Diagram />
                 </div>
                 <figcaption className="mt-5">
@@ -296,9 +298,50 @@ export default function Home() {
           <ElevationProfile />
         </section>
 
+        {/* ---------- Talks ---------- */}
+        <section id="talks" className="py-24 border-t border-line scroll-mt-14">
+          <SheetHeading
+            sheet="05"
+            name="Base camps"
+            title="Talks at universities"
+            aside="Sharing what production taught me with the next engineers, on campuses across Ecuador."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-14">
+            {talks.map((talk) => (
+              <article key={talk.shortName}>
+                <div className="frame aspect-[16/10] overflow-hidden">
+                  {talk.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={talk.photo.src}
+                      alt={talk.photo.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover grayscale-[0.35] hover:grayscale-0 transition-[filter] duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-[repeating-radial-gradient(circle_at_30%_60%,transparent_0_18px,var(--color-line)_18px_19px)]">
+                      <span className="font-display text-6xl text-ink-faint">{talk.shortName}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="mt-5 label flex flex-wrap gap-x-3 gap-y-1">
+                  <span className="text-accent">{talk.shortName}</span>
+                  <span>{talk.city}, Ecuador</span>
+                  {talk.date && <span>{talk.date}</span>}
+                </div>
+                <h3 className="font-display text-3xl mt-2">{talk.title}</h3>
+                <p className="mt-2 text-ink-soft text-base">
+                  {talk.university}
+                  {talk.context && <> · {talk.context}</>}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {/* ---------- Capabilities ---------- */}
         <section className="py-24 border-t border-line">
-          <SheetHeading sheet="05" name="Kit" title="What I carry" />
+          <SheetHeading sheet="06" name="Kit" title="What I carry" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {capabilities.map((capability, index) => (
               <div key={capability.title} className="flex gap-5 border-t border-line pt-6">
@@ -316,7 +359,7 @@ export default function Home() {
 
         {/* ---------- Writing ---------- */}
         <section className="py-24 border-t border-line">
-          <SheetHeading sheet="06" name="Field notes" title="Writing" />
+          <SheetHeading sheet="07" name="Field notes" title="Writing" />
           <a
             href="https://medium.com/@andresmunozb"
             target="_blank"
@@ -339,7 +382,7 @@ export default function Home() {
         {/* ---------- Contact ---------- */}
         <section className="py-28 border-t border-line">
           <SheetHeading
-            sheet="07"
+            sheet="08"
             name="Contact"
             title={
               <>

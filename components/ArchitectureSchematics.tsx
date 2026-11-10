@@ -9,9 +9,11 @@ import { motion } from "framer-motion";
    ============================================================ */
 
 const INK = "#ECE7D8";
-const FAINT = "#7D8880";
+const FAINT = "#A9B0A6";
+const GROUND = "#0B100F";
+const NODE_FILL = "#1D2925";
 const ACCENT = "#FF6B3D";
-const LINE = "rgba(236,231,216,0.5)";
+const LINE = "rgba(236,231,216,0.62)";
 
 type NodeProps = {
   x: number; y: number; w?: number; h?: number;
@@ -28,15 +30,15 @@ function Node({ x, y, w = 120, h = 46, title, sub, accent, delay = 0 }: NodeProp
     >
       <rect
         x={x} y={y} width={w} height={h}
-        fill={accent ? "rgba(255,107,61,0.1)" : "rgba(236,231,216,0.035)"}
-        stroke={accent ? ACCENT : INK}
+        fill={accent ? ACCENT : NODE_FILL}
+        stroke={accent ? ACCENT : "rgba(236,231,216,0.5)"}
         strokeWidth={1.1}
       />
       <text
         x={x + w / 2} y={sub ? y + h / 2 - 3 : y + h / 2 + 4}
         textAnchor="middle"
         fontFamily="'Instrument Serif', serif" fontSize="16"
-        fill={accent ? ACCENT : INK}
+        fill={accent ? GROUND : INK}
       >
         {title}
       </text>
@@ -45,7 +47,7 @@ function Node({ x, y, w = 120, h = 46, title, sub, accent, delay = 0 }: NodeProp
           x={x + w / 2} y={y + h / 2 + 13}
           textAnchor="middle"
           fontFamily="'IBM Plex Mono', monospace" fontSize="8.5"
-          letterSpacing="0.06em" fill={FAINT}
+          letterSpacing="0.06em" fill={accent ? "rgba(11,16,15,0.78)" : FAINT}
         >
           {sub}
         </text>

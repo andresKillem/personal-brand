@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { CompanyMark } from "@/components/CompanyMark";
 import { camps, type Camp } from "@/lib/content";
 
 /* ============================================================
@@ -207,8 +208,10 @@ export function ElevationProfile() {
                     : "border-line text-ink-soft hover:border-ink hover:text-ink"
                 }`}
               >
-                <span className="opacity-70 mr-1.5">{camp.numeral}</span>
-                {camp.company}
+                <span className="inline-flex items-center gap-2">
+                  <CompanyMark company={camp.company} size={16} />
+                  {camp.company}
+                </span>
               </button>
             );
           })}
@@ -231,7 +234,10 @@ export function ElevationProfile() {
             {selectedCamp.location && <span>{selectedCamp.location}</span>}
           </div>
           <h3 className="display-md font-display mt-3">{selectedCamp.title}</h3>
-          <p className="font-display italic text-2xl text-accent mt-1">{selectedCamp.company}</p>
+          <p className="font-display italic text-2xl text-accent mt-2 flex items-center gap-3">
+            <CompanyMark company={selectedCamp.company} />
+            {selectedCamp.company}
+          </p>
           {selectedCamp.isCurrent && (
             <p className="label mt-4 inline-flex items-center gap-2 text-glacier">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-glacier" />

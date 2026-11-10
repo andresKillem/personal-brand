@@ -171,6 +171,55 @@ export const capabilities = [
   },
 ];
 
+export type Talk = {
+  university: string;
+  shortName: string;
+  city: string;
+  date: string;
+  title: string;
+  context: string;
+  photo?: { src: string; alt: string };
+};
+
+/** University talks in Ecuador, newest first. */
+export const talks: Talk[] = [
+  {
+    university: "Universidad Ecotec",
+    shortName: "Ecotec",
+    city: "Guayaquil",
+    date: "18 Jul 2026",
+    title: "Arquitecturas Agénticas Aplicadas",
+    context: "Keynote, 50 min · AWS GenAI Security Day, AI Architecture & Innovation track · AWS User Group Security Ecuador",
+    photo: { src: "/talks/ecotec-2026.jpg", alt: "Andrés presenting “Arquitectura Agéntica” on stage at Universidad Ecotec" },
+  },
+  {
+    university: "Universidad de las Fuerzas Armadas",
+    shortName: "ESPE",
+    city: "Sangolquí",
+    date: "14 Nov 2024",
+    title: "Guest talk on campus",
+    context: "A full lecture hall on the Sangolquí campus",
+    photo: { src: "/talks/espe-2024.jpg", alt: "Group photo with students and faculty outside Bloque D at ESPE" },
+  },
+  {
+    university: "Universidad de Las Américas",
+    shortName: "UDLA",
+    city: "Quito",
+    date: "23 Oct 2024",
+    title: "¿Por qué la resiliencia es clave en las arquitecturas modernas?",
+    context: "Part of “Desafíos de la Tecnología en una Fintech”, Deuna’s session at UDLA",
+    photo: { src: "/talks/udla-2024.jpg", alt: "Andrés speaking on stage at UDLA, beside a slide on resilience in modern architectures" },
+  },
+  {
+    university: "Universidad Politécnica Estatal del Carchi",
+    shortName: "UPEC",
+    city: "Tulcán",
+    date: "",
+    title: "Guest talk on campus",
+    context: "",
+  },
+];
+
 export const surveyData = [
   { value: "−40%", label: "Dev overhead" },
   { value: "1,500+", label: "TPS in fintech" },
