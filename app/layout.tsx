@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andresmunoz.tech"),
   title: "Andrés Muñoz | Sr Staff Software Engineer — Agent Systems & Platform",
   description: "Sr Staff Software Engineer at Accordion. Production agent systems — multi-provider routing, RAG, and evals — on a deep Cloud/Platform & SRE foundation.",
   keywords: [
@@ -30,10 +31,12 @@ export const metadata: Metadata = {
     url: "https://andresmunoz.tech",
     title: "Andrés Muñoz — Sr Staff Software Engineer",
     description: "Sr Staff Software Engineer at Accordion. Production agent systems — multi-provider routing, RAG, evals — on a deep Cloud/Platform & SRE foundation.",
-    siteName: "Andrés Muñoz Portfolio",
+    siteName: "Andrés Muñoz",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Andrés Muñoz — Sr Staff Software Engineer at Accordion" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
     title: "Andrés Muñoz — Sr Staff Software Engineer",
     description: "Sr Staff Software Engineer at Accordion. Production agent systems — multi-provider routing, RAG, and evals.",
   },
