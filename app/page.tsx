@@ -2,6 +2,7 @@ import { AIChatbot } from "@/components/AIChatbot";
 import { Altimeter } from "@/components/Altimeter";
 import { ContourField } from "@/components/ContourField";
 import { ElevationProfile } from "@/components/ElevationProfile";
+import { RouteMap } from "@/components/RouteMap";
 import {
   AgenticSREDiagram,
   LangGraphDiagram,
@@ -113,83 +114,80 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ---------- Hero ---------- */}
+      {/* ---------- Hero: the map itself ---------- */}
       <section className="relative border-b border-line">
-        <ContourField className="absolute inset-0 w-full h-full [mask-image:radial-gradient(ellipse_90%_85%_at_70%_40%,black_30%,transparent_100%)]" />
-        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-16 pb-14 md:pt-24 md:pb-16">
-          <div className="flex items-center gap-4 mb-12 md:mb-16 rise">
+        <ContourField
+          ascent={0.3}
+          className="absolute inset-0 w-full h-full [mask-image:linear-gradient(to_bottom,black_75%,transparent)]"
+        />
+        {/* Darkens the terrain behind the title block so the text stays readable */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_18%_30%,var(--color-paper)_20%,transparent_100%)]"
+        />
+
+        <RouteMap className="hidden lg:block absolute inset-0" />
+
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-8 pb-10 lg:min-h-[47rem] pointer-events-none">
+          {/* Map margin */}
+          <div className="flex items-center gap-4 rise">
             <span className="label text-accent">Sheet 01</span>
-            <span className="label">Agent systems</span>
+            <span className="label">Career survey · 2011 — 2026</span>
             <span className="rule flex-1" />
             <span className="label hidden sm:inline">0°13′S 78°31′W → 41°03′N 73°32′W</span>
           </div>
 
-          <h1 className="display-xl font-display max-w-5xl rise rise-1">
-            Agent systems that <span className="italic text-accent">hold&nbsp;up</span> in production.
-          </h1>
+          {/* Title block */}
+          <div className="mt-12 lg:mt-16 max-w-xl pointer-events-auto">
+            <h1 className="font-body font-bold uppercase leading-[0.9] tracking-[-0.035em] text-[clamp(2.75rem,6.4vw,5.25rem)] rise rise-1">
+              Andrés
+              <br />
+              Muñoz
+            </h1>
+            <p className="mt-6 font-display text-3xl leading-tight rise rise-2">
+              {currentCamp.title}
+              <span className="italic text-accent"> at {currentCamp.company}</span>
+            </p>
+            <p className="mt-6 text-ink-soft border-l border-accent pl-5 rise rise-3">
+              I build agent systems that hold up in production: multi-agent
+              orchestration, multi-provider routing, hybrid retrieval, and evals
+              that make quality a <span className="text-ink italic">number</span>,
+              not a feeling. All on a platform/SRE foundation hardened in fintech
+              at 1,500+ TPS.
+            </p>
 
-          <div className="mt-12 md:mt-16 grid grid-cols-12 gap-x-10 gap-y-10">
-            <div className="col-span-12 lg:col-span-7 rise rise-2">
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed">
-                I design multi-agent orchestration (LangGraph supervisor–worker),
-                multi-provider routing behind a Portkey gateway, and hybrid retrieval
-                across vectors, a knowledge graph, and rerank — then make quality a{" "}
-                <span className="text-ink italic">number</span>, not a feeling, with
-                golden-dataset evals and Langfuse tracing. All on a platform/SRE
-                foundation hardened in fintech at 1,500+ TPS.
-              </p>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <a href="#systems" className="btn btn-solid group">
-                  View the systems
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-                <a href="#route" className="btn">The route so far</a>
+            {/* Scale bar */}
+            <div className="mt-9 rise rise-4" aria-hidden="true">
+              <div className="flex h-1.5 w-64 border border-ink-faint">
+                <span className="flex-1 bg-ink-faint" />
+                <span className="flex-1" />
+                <span className="flex-1 bg-ink-faint" />
+              </div>
+              <div className="flex w-64 justify-between label mt-2">
+                <span>2011</span>
+                <span>2016</span>
+                <span>2021</span>
+                <span>2026</span>
               </div>
             </div>
-
-            {/* Map legend */}
-            <aside className="col-span-12 lg:col-span-5 rise rise-3">
-              <div className="frame p-6 backdrop-blur-sm">
-                <div className="label mb-5">Legend</div>
-                <dl className="space-y-5">
-                  <div>
-                    <dt className="label flex items-center gap-2 text-glacier">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-glacier" />
-                      Current position
-                    </dt>
-                    <dd className="mt-2 font-display text-2xl leading-tight">
-                      {currentCamp.title}
-                      <span className="italic text-accent"> · {currentCamp.company}</span>
-                    </dd>
-                  </div>
-                  <div className="border-t border-line pt-4">
-                    <dt className="label">Bearing</dt>
-                    <dd className="mt-1.5 text-ink-soft">Quito, Ecuador → Stamford, CT</dd>
-                  </div>
-                  <div className="border-t border-line pt-4">
-                    <dt className="label">Terrain</dt>
-                    <dd className="mt-1.5 text-ink-soft">
-                      Agent orchestration · Retrieval &amp; grounding · Evals &amp; observability · Platform &amp; SRE
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </aside>
           </div>
+        </div>
 
-          {/* Survey data */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 border-t border-line rise rise-4">
-            {surveyData.map((stat) => (
-              <div key={stat.label} className="py-6 pr-4 border-b border-line md:border-b-0">
-                <div className="font-display text-4xl md:text-5xl">{stat.value}</div>
-                <div className="label mt-2">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+        {/* On small screens the route sits below the title block */}
+        <div className="relative lg:hidden h-80 mx-5 sm:mx-8 mb-8 border-t border-line">
+          <RouteMap className="absolute inset-0" />
+        </div>
+      </section>
 
-          <p className="mt-10 font-display italic text-2xl text-ink-faint rise rise-5">
-            — Architecting elegance in chaos.
-          </p>
+      {/* ---------- Survey data ---------- */}
+      <section className="border-b border-line">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-2 md:grid-cols-4">
+          {surveyData.map((stat) => (
+            <div key={stat.label} className="py-7 pr-4">
+              <div className="font-display text-4xl md:text-5xl">{stat.value}</div>
+              <div className="label mt-2">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -45,7 +45,13 @@ function terrainHeight(x: number, y: number, drift: number): number {
   );
 }
 
-export function ContourField({ className = "" }: { className?: string }) {
+type ContourFieldProps = {
+  className?: string;
+  /** How strongly the terrain rises from the lower left to the upper right (0 = flat). */
+  ascent?: number;
+};
+
+export function ContourField({ className = "", ascent = 0 }: ContourFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -87,7 +93,7 @@ export function ContourField({ className = "" }: { className?: string }) {
         for (let column = 0; column < columns; column++) {
           const xPx = column * CELL_SIZE_PX;
           const yPx = row * CELL_SIZE_PX;
-          let height = terrainHeight(xPx / 260, yPx / 260, drift);
+          let height = terrainHeight(xPx / 260, yPx / 260, drift) + ascent * (xPx / widthPx - yPx / heightPx) * 0.5;
           if (pointer.strength > 0.01) {
             const dx = xPx - pointer.x;
             const dy = yPx - pointer.y;
@@ -104,7 +110,7 @@ export function ContourField({ className = "" }: { className?: string }) {
         const level = 0.18 + (levelIndex / (CONTOUR_LEVEL_COUNT + 1)) * 0.72;
         const isIndexContour = levelIndex % INDEX_CONTOUR_EVERY === 0;
         context.strokeStyle = isIndexContour ? indexColor : contourColor;
-        context.globalAlpha = isIndexContour ? 0.34 : 1;
+        context.globalAlpha = isIndexContour ? 0.42 : 1;
         context.beginPath();
 
         for (let row = 0; row < rows - 1; row++) {
@@ -196,7 +202,7 @@ export function ContourField({ className = "" }: { className?: string }) {
       visibilityObserver.disconnect();
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [ascent]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
 }

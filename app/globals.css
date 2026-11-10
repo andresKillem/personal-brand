@@ -20,7 +20,7 @@
   --color-accent: #FF6B3D;
   --color-accent-soft: rgba(255, 107, 61, 0.12);
   --color-glacier: #8FD3C1;
-  --color-contour: #22312C;
+  --color-contour: #293A34;
 
   --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --font-body: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
@@ -144,7 +144,18 @@ h1, h2, h3, h4 {
 }
 .beacon { animation: beacon 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; transform-origin: center; transform-box: fill-box; }
 
+/* Hero route: the line draws itself, then the camps appear along it */
+@keyframes route-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.route-line {
+  stroke-dasharray: 1;
+  animation: route-draw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+@keyframes camp-in { from { opacity: 0; } to { opacity: 1; } }
+.route-camp { animation: camp-in 0.5s ease-out both; }
+
 @media (prefers-reduced-motion: reduce) {
+  .route-line, .route-camp { animation: none; }
+
   html { scroll-behavior: auto; }
   .rise, .beacon { animation: none; }
 }
