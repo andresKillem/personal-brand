@@ -228,7 +228,7 @@ export function ElevationProfile() {
           <div className="label flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-accent">Camp {selectedCamp.numeral}</span>
             <span>{selectedCamp.period}</span>
-            <span>{selectedCamp.location}</span>
+            {selectedCamp.location && <span>{selectedCamp.location}</span>}
           </div>
           <h3 className="display-md font-display mt-3">{selectedCamp.title}</h3>
           <p className="font-display italic text-2xl text-accent mt-1">{selectedCamp.company}</p>

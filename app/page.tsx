@@ -199,6 +199,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <span className="label shrink-0">Surveyed for</span>
             <div className="flex flex-wrap items-center gap-x-10 gap-y-4 font-display text-2xl text-ink-soft">
+              <span>Accordion</span>
               <span>Deuna</span>
               <span>Housecall Pro</span>
               <span>Kushki</span>
@@ -341,7 +342,7 @@ export default function Home() {
             name="Contact"
             title={
               <>
-                Currently open to <span className="italic text-accent">AI Engineer</span> &amp; LLM Systems roles.
+                Building something that has to <span className="italic text-accent">hold up</span>? Let’s compare notes.
               </>
             }
           />

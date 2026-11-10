@@ -37,7 +37,7 @@ export const AIChatbot = () => {
       const lowerMsg = userMessage.toLowerCase();
 
       if (lowerMsg.includes("who") || lowerMsg.includes("experience") || lowerMsg.includes("andres")) {
-        response = "Andrés is a Solutions Architect and DevOps expert with 10+ years experience at companies like Deuna, Housecall Pro, and Kushki.";
+        response = "Andrés is a Sr Staff Software Engineer at Accordion, with 15 years building platforms and agent systems at companies like Deuna, Housecall Pro, and Kushki.";
       } else if (lowerMsg.includes("project") || lowerMsg.includes("pilasfi")) {
         response = "He developed PilasFi.com (a FinTech platform), Deuna's payment systems, and AI platforms at Housecall Pro.";
       } else if (lowerMsg.includes("contact") || lowerMsg.includes("email") || lowerMsg.includes("hire")) {
